@@ -26,3 +26,89 @@ module.exports = Airplane;
 //print: StarJet
 
 ##require()
+To make use of the exported module and the behavior we define within it, we import the module. A common way to do this is with the require() function.
+
+For instance, say we want the module to control the menu’s data and behavior, and we want a separate file to handle placing an order. We would create a separate file order.js and import the Menu module from menu.js to order.js using require():
+
+In order.js we would write:
+
+```
+const Menu = require('./menus.js');
+function placeOrder(){
+  cosole.log('My order is: '+Menu.specialty);
+}
+placeOrder();
+```
+We now have the entire behavior of Menu available in order.js. Here, we notice:
+
+In order.js we import the module by creating a variable with const called Menu and setting it equal to the value of the require() function. We can set this variable to any variable name we like, such as menuItems.
+require() is a JavaScript function that enables a module to load by passing in the module’s filepath as a parameter.
+'./menu.js' is the argument we pass to the require() function.
+The placeOrder() function then uses the Menu module in its function definition. By calling Menu.specialty, we access the property specialty defined in the Menu module.
+We can then invoke the function using placeOrder()
+Taking a closer look, the pattern to import a module is:
+
+Import the module
+Use the module and its properties within a program.
+```
+const Airplane = require('./1-airplane.js');
+
+function displayAirplane() {
+  console.log(Airplane.myAirplane);
+}
+
+displayAirplane();
+```
+##module.exports II
+We can also wrap any collection of data and functions in an object, and export the object using module.exports. In menu.js, we could write:
+
+```
+module.exports = {
+  specialty: "Roasted Beet Burger with Mint Sauce",
+  getSpecialty: function() {
+    return this.specialty;
+  } 
+}; 
+```
+In the above code, notice:
+
+module.exports exposes the current module as an object.
+specialty and getSpecialty are properties on the object.
+Then in order.js, we write:
+```
+const Menu = require('./menu.js');
+
+console.log(Menu.getSpecialty());
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
