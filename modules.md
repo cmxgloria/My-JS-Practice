@@ -319,8 +319,232 @@ export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRan
 export default meetsSpeedRangeRequirements;```
 
 
+##Import Named Imports
+To import variables that are declared, we simply use the original syntax that describes the variable name. In other words, exporting upon declaration does not have an impact on how we import the variables.
+
+```
+import { availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+import meetsSpeedRangeRequirements from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element['fuelCapacity']);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+
+displayStaffStatus();
+
+function displaySpeedRangeStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets speed range requirements:' + meetsSpeedRangeRequirements(element.maxSpeed, element.minSpeed, flightRequirements.requiredSpeedRange));
+  });
+}
+
+displaySpeedRangeStatus();
+```
+##Export as
+Named exports also conveniently offer a way to change the name of variables when we export or import them. We can do this with the as keyword.
+
+```
+let specialty = '';
+let isVegetarian = function() {
+}; 
+let isLowSodium = function() {
+}; 
+
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+
+```
+sample
+```
+export let availableAirplanes = [
+{name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed: 1200,
+ minSpeed: 300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed: 800,
+ minSpeed: 200
+}
+];
+
+export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRange) {
+  let range = maxSpeed - minSpeed;
+  if (range > requiredSpeedRange) {
+    return true;
+    } else {
+    return false;
+  }
+};
+
+export default meetsSpeedRangeRequirements;
+
+```
+##Import as
+To import named export aliases with the as keyword, we add the aliased variable in our import statement.
+import { chefsSpecial, isVeg } from './menu';
+ For example, the isLowSodium object that we exported could be aliased with the as keyword when imported: import {isLowSodium as saltFree} from 'Menu';
+Another way of using aliases is to import the entire module as an alias:
+```
+import * as Carte from './menu';
+
+Carte.chefsSpecial;
+Carte.isVeg();
+Carte.isLowSodium(); ```
+
+##Combining Export Statements
+We can also use named exports and default exports together. In menu.js:
+```
+let specialty = '';
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+function isGlutenFree() {
+};
+
+export { specialty as chefsSpecial, isVegetarian as isVeg };
+export default isGlutenFree;```
+Here we use the keyword export to export the named exports at the bottom of the file. Meanwhile, we export the isGlutenFree variable using the export default syntax.
+
+This would also work if we exported most of the variables as declared and exported others with the export default syntax.
+```
+export let Menu = {};
+
+export let specialty = '';
+export let isVegetarian = function() {
+}; 
+export let isLowSodium = function() {
+}; 
+let isGlutenFree = function() {
+};
+
+export default isGlutenFree;
+```
+Here we use the export keyword to export the variables upon declaration, and again export the isGlutenFree variable using the export default syntax
+sample
+```
+export let availableAirplanes = [
+{name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed: 1200,
+ minSpeed: 300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed: 800,
+ minSpeed: 200
+}
+];
+
+export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRange) {
+  let range = maxSpeed - minSpeed;
+  if (range > requiredSpeedRange) {
+    return true;
+    } else {
+    return false;
+  }
+};
+
+export default meetsSpeedRangeRequirements;
+```
+
+##Combining Import Statements
+We can import the collection of objects and functions with the same data.
+
+We can use an import keyword to import both types of variables as such:
+```
+import { specialty, isVegetarian, isLowSodium } from './menu';
+
+import GlutenFree from './menu';
+```
+sample
+
+```
+import { availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+import meetsSpeedRangeRequirements from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element['fuelCapacity']);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+
+displayStaffStatus();
+
+function displaySpeedRangeStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets speed range requirements:' + meetsSpeedRangeRequirements(element.maxSpeed, element.minSpeed, flightRequirements.requiredSpeedRange));
+  });
+}
+
+displaySpeedRangeStatus();
 
 
+```
+##Review
+We just learned how to use JavaScript modules. Let’s review what we learned:
+
+Modules in JavaScript are reusable pieces of code that can be exported from one program and imported for use in another program.
+
+module.exports exports the module for use in another program.
+require() imports the module for use in the current program.
+ES6 introduced a more flexible, easier syntax to export modules:
+
+default exports use export default to export JavaScript objects, functions, and primitive data types.
+named exports use the export keyword to export data in variables.
+named exports can be aliased with the as keyword.
+import is a keyword that imports any object, function, or data type.
 
 
 
