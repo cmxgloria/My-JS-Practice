@@ -1,5 +1,5 @@
-‘’’’JAVASCRIPT PROMISES
--Introduction
+#JAVASCRIPT PROMISES
+-##Introduction
 An asynchronous operation is one that allows the computer to “move on” to other tasks while waiting for the asynchronous operation to complete. 
 A Promiseobject can be in one of three states:
 Pending: The initial state— the operation has not completed yet.
@@ -7,15 +7,16 @@ Fulfilled: The operation has completed successfully and the promise now has a re
 Rejected: The operation has failed and the promise has a reason for the failure. This reason is usually an Error of some kind.
 -Constructing a Promise Object
 
-To create a new Promiseobject, we use the new keyword and the Promiseconstructor method:
-
+To create a n`ew Promiseobject`, we use the `new `keyword and the `Promise constructor method`:
+```
 const executorFunction=(resolve, reject)=>{
   
 };
 const myFirstPromise=new
 Promise(executorFunction);
+```
 Let’s look at an example executor function in a Promise constructor:
-
+```
 const executorFunction=(resolve, reject)=>{
  if(someCondition){
    resolve('I resolved');
@@ -25,8 +26,9 @@ const executorFunction=(resolve, reject)=>{
 }
 const myFirstPromise=new
 Promise(executorFunction);
-
+```
 Sample
+```
 const myExecutor = (resolve, reject) => {
     if (inventory.sunglasses > 0) {
         resolve('Sunglasses order processed.');
@@ -42,35 +44,38 @@ const orderSunglasses = () => {
 const orderPromise = orderSunglasses();
 
 console.log(orderPromise);              
+```
 
 -The Node setTimeout() Function
 
-setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay. setTimeout() has two parameters: a callback function and a delay in milliseconds.
-
+`setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay. setTimeout() has two parameters: a callback function and a delay in milliseconds.`
+```
 const delayedHello=()=>{
   console.log('Hi!This is an asynchronous greeting!');
 };
 setTimeOut(delayedHello, 2000);
-
+```
 Before it can run, any synchronous code from the program will run. Next, any code in front of it in the line will run. This means it might be more than two seconds before delayedHello() is actually executed.        
 Let’s look at how we’ll be using setTimeout() to construct asynchronous promises:
+```
 const returnPromiseFunction=()=>{
   return new Promise(resolve, reject)=>{
     setTimeOut(()=>{resolve('I resolved!')}, 1000);
   };
 };
 const prom=returnPromiseFuncdtion();
-
+```
 In the example code, we invoked returnPromiseFunction() which returned a promise. We assigned that promise to the variable prom. Similar to the asynchronous promises you may encounter in production, prom will initially have a status of pending.
 
--Consuming Promises
+##Consuming Promises
 Promise objects come with an aptly named .then() method
-.then() is a higher-order function— it takes two callback functions as arguments. We refer to these callbacks as handlers. When the promise settles, the appropriate handler will be invoked with that settled value.
-The first handler, sometimes called onFulfilled, is a success handler, and it should contain the logic for the promise resolving.
-The second handler, sometimes called onRejected, is a failure handler, and it should contain the logic for the promise rejecting.
+`.then() is a higher-order function— it takes two callback functions as arguments`. We refer to these callbacks as handlers. When the promise settles, the appropriate handler will be invoked with that settled value.
+`The first handler, sometimes called onFulfilled, is a success handler, and it should contain the logic for the promise resolving.
+The second handler, sometimes called onRejected, is a failure handler, and it should contain the logic for the promise rejecting.`
 We can invoke .then() with one, both, or neither handler! This allows for flexibility, but it can also make for tricky debugging. If the appropriate handler is not provided, instead of throwing an error, .then() will just return a promise with the same settled value as the promise it was called on. One important feature of .then() is that it always returns a promise.
 -The onFulfilled and onRejected Functions
 To handle a “successful” promise, or a promise that resolved, we invoke .then() on the promise, passing in a success handler callback function:
+```
 const prom= new Promise((resolve, reject)=>{
   resolve('Yay!');
 });
@@ -78,12 +83,13 @@ const handleSuccess=(resolveValue)=>{
   console.log(resolveValue);
 };
 prom.then(handleSuccess);//print: 'Yay!'
-
+```
 prom is a promise which will resolve to 'Yay!'.
 We define a function, handleSuccess(), which prints the argument passed to it.
 We invoke prom‘s .then() function passing in our handleSuccess() function.
 Since prom resolves, handleSuccess() is invoked with prom‘s resolved value, 'Yay', so 'Yay' is logged to the console.
 With typical promise consumption, we won’t know whether a promise will resolve or reject, so we’ll need to provide the logic for either case. We can pass both an onFulfilled and onRejected callback to .then().
+```
 let prom = new Promise((resolve, reject) => {
   let num = Math.random();
   if (num < .5 ){
@@ -102,6 +108,7 @@ const handleFailure = (rejectionReason) => {
 };
 
 prom.then(handleSuccess, handleFailure);
+```
 prom is a promise which will randomly either resolve with 'Yay!'or reject with 'Ohhh noooo!'.
 We pass two handler functions to .then(). The first will be invoked with 'Yay!' if the promise resolves, and the second will be invoked with 'Ohhh noooo!' if the promise rejects.
 ```app.js
