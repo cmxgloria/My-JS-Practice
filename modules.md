@@ -80,6 +80,270 @@ const Menu = require('./menu.js');
 
 console.log(Menu.getSpecialty());
 ```
+##export default
+We’ll begin with the first syntax, default export. The default export syntax works similarly to the module.exports syntax, allowing us to export one module per file.
+```
+let Menu = {};
+export default Menu;
+```
+export default uses the JavaScript export statement to export JavaScript objects, functions, and primitive data types.
+Menu refers to the name of the Menu object, the object that we are setting the properties on within our modules.
+```
+export let availableAirplanes = [
+{name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed: 1200,
+ minSpeed: 300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed: 800,
+ minSpeed: 200
+}
+];
+
+export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRange) {
+  let range = maxSpeed - minSpeed;
+  if (range > requiredSpeedRange) {
+    return true;
+    } else {
+    return false;
+  }
+};
+
+export default meetsSpeedRangeRequirements;
+```
+##import
+ES6 module syntax also introduces the import keyword for importing objects. In our order.js example, we import an object like this
+import meetsSpeedRangeRequirements from './airplane';
+
+sample
+```
+import { availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+import meetsSpeedRangeRequirements from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element['fuelCapacity']);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+
+displayStaffStatus();
+
+function displaySpeedRangeStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets speed range requirements:' + meetsSpeedRangeRequirements(element.maxSpeed, element.minSpeed, flightRequirements.requiredSpeedRange));
+  });
+}
+
+displaySpeedRangeStatus();
+```
+//print:
+displaySpeedRangeStatus();
+Fuel Capacity of AeroJet: 800
+Fuel Capacity of SkyJet: 500
+AeroJet meets staff requirements: true
+SkyJet meets staff requirements: false
+AeroJet meets speed range requirements:true
+SkyJet meets speed range requirements:false
+
+##Named Exports
+ES6 introduced a second common approach to export modules. In addition to default export, named exports allow us to export data through the use of variables.
+
+Let’s see how this works. In menu.js we would be sure to give each piece of data a distinct variable name
+```
+let sepecialty = '';
+function isVegetarian(){
+  };
+function isLowSodium(){
+};
+export {specialty, isVeterarian};
+
+
+```
+Notice that, when we use named exports, we are not setting the properties on an object. Each export is stored in its own variable.
+specialty is a string object, while isVegetarian and isLowSodium are objects in the form of functions. Recall that in JavaScript, every function is in fact a function object.
+export { specialty, isVegetarian }; exports objects by their variable names. Notice the keyword export is the prefix.
+specialty and isVegetarian are exported, while isLowSodium is not exported, since it is not specified.
+```
+export let availableAirplanes = [
+{name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed: 1200,
+ minSpeed: 300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed: 800,
+ minSpeed: 200
+}
+];
+
+export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRange) {
+  let range = maxSpeed - minSpeed;
+  if (range > requiredSpeedRange) {
+    return true;
+    } else {
+    return false;
+  }
+};
+
+export default meetsSpeedRangeRequirements;
+```
+
+##Name Imports
+import {specialty, isVegetarian} from './menu';
+console.log(specialty);
+
+```
+import { availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+import meetsSpeedRangeRequirements from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element['fuelCapacity']);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+
+displayStaffStatus();
+
+function displaySpeedRangeStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets speed range requirements:' + meetsSpeedRangeRequirements(element.maxSpeed, element.minSpeed, flightRequirements.requiredSpeedRange));
+  });
+}
+
+displaySpeedRangeStatus();
+```
+##Export Named Exports
+Named exports are also distinct in that they can be exported as soon as they are declared, by placing the keyword export in front of variable declarations.
+```
+export let specialty = '';
+export function isVegetarian(){
+  
+};
+function isLowSodium(){
+  
+};
+```
+The export keyword allows us to export objects upon declaration, as shown in export let specialty and export function isVegetarian() {}.
+We no longer need an export statement at the bottom of our file, since this behavior is handled above.
+
+
+```
+export let availableAirplanes = [
+{name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed: 1200,
+ minSpeed: 300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed: 800,
+ minSpeed: 200
+}
+];
+
+export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRange) {
+  let range = maxSpeed - minSpeed;
+  if (range > requiredSpeedRange) {
+    return true;
+    } else {
+    return false;
+  }
+};
+
+export default meetsSpeedRangeRequirements;```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
