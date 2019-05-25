@@ -101,7 +101,10 @@ withAsync(100)
 })
  
 ```
+//Write an async function, withAsync() which reproduces the functionality of withConstructor(). Though your function will return a promise, it should not construct the promise using the new keyword. Instead, it should rely on the fact that an async function automatically returns a promise.
+
 ##The await Operator
+The await keyword can only be used inside an async function. await is an operator: it returns the resolved value of a promise. Since promises resolve in an indeterminate amount of time, await halts, or pauses, the execution of our async function until a given promise is resolved.
 ```
 async function asyncFuncExample(){
   let resolvedValue = await myPromise();
