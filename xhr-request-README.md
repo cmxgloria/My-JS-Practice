@@ -3,6 +3,59 @@ There are many types of HTTP requests. The four most commonly used types of HTTP
 [Mozilla Developer Network: HTTP methods]
 We’ll use the Datamuse API for GET requests and the Rebrandly URL Shortener API for POST requests. To complete the exercise on POST, make sure you create a Rebrandly API Key by following the instructions in the article below:
 [Codecademy Articles: Rebrandly URL Shortener API ]
+```
+const jsonButton = document.querySelector('#generate');
+const buttonContainer = document.querySelector('#buttonContainer');
+const display = document.querySelector('#displayContainer');
+const collection = ["Another", "More", "Next", "Continue", "Keep going", "Click me", "A new one"];
+
+const generateJson = () => {
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+  
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+  renderResponse(xhr.response);
+      changeButton();
+    }
+  }
+  xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+  xhr.send();
+}
+
+const formatJson = (resJson) => {
+  resJson = JSON.stringify(resJson);
+  let counter = 0;
+  return resJson.split('')
+  .map(char => {
+    switch (char) {
+      case ',':
+        return `,\n${' '.repeat(counter * 2)}`;
+      case '{':
+        counter += 1;
+        return `{\n${' '.repeat(counter * 2)}`;
+      case '}':
+        counter -= 1;
+        return `\n${' '.repeat(counter * 2)}}`;
+      default:
+        return char;
+    }
+  })
+  .join('');
+}
+
+const renderResponse = (jsonResponse) => {
+  const jsonSelection = Math.floor(Math.random() * 10);
+  display.innerHTML = `<pre>${formatJson(jsonResponse[jsonSelection])}</pre>`;
+}
+
+const changeButton = () => {
+  const newText = Math.floor(Math.random() * 7);
+  jsonButton.innerHTML = `${collection[newText]}!`;
+}
+
+jsonButton.addEventListener('click', generateJson);
+```
 ##HTTP Requests
 Web developers use the event loop to create a smoother browsing experience by deciding when to call functions and how to handle asynchronous events. We’ll be exploring one system of technologies called Asynchronous JavaScript and XML, or AJAX.
 To read more about the event loop, read the MDN documentation:
@@ -15,6 +68,10 @@ setTimeout(() => {
 console.log('Second message!');
 
 ```
+//print: First message!
+Second message!
+This message will ru last.(after 2.5 seconds later, they pop up all the the same time in this order)
+
 ##
 XHR GET Requests I
 Asynchronous JavaScript and XML (AJAX), enables requests to be made after the initial page load. Initially, AJAX was used only for XML formatted data, now it can be used to make requests that have many different formats.
@@ -25,6 +82,20 @@ XMLHttpRequest (XHR) is an API available to web browser scripting languages such
 And for AJAX request,
 An Ajax call is an asynchronous request initiated by the browser that does not directly result in a page transition.
 An Ajax ("Asynchronous Javascript and XML") request is sometimes called an XHR request ("XmlHttpRequest"), which is the name most browsers give the object used to send an Ajax request, because at least initially Ajax calls involved the sending and receiving of XML but now it's just as common to send/receive JSON, plain text or HTML.
+//XMLHttpRequest GET
+```
+const hrl = new XMLHttpRequest();
+const url = "http://api-to-call.com/enpoint";
+xhr.responseType = 'json';
+xhr.onreadystatechange = () =>{
+if(xhr.readyState===XMLHttpRequest.DONE){
+//Code to execute with response
+}
+};
+xhr.open ('GET',url);
+xhr.send();
+```
+
 ##XHR GET Requests II
 
 ```
@@ -40,6 +111,19 @@ xhr.onreadystatechange = () => {
 xhr.open('GET', url);
 xhr.send();
 ```
+Question
+In the context of this exercise 3, what does the send() method for an XHR request do?
+
+Answer
+If we take a look at our code, the last two lines are
+
+xhr.open('GET', url);
+xhr.send();
+The open() method is used to set the request type, GET, and the specified URL to send the request to.
+
+Then, the send() request is used to send the XMLHttpRequest to the specified URL.
+
+
 ##
 XHR GET Requests III
 ```
@@ -133,6 +217,16 @@ const renderJsonResponse = (res) => {
 }
 
 ```
+In this exercise 1, we define a queryParams variable that is set to 'rel_rhy=', which is the start of a parameter for the query string. What is a query string?
+
+Answer
+A query string is part of the full query, or URL, which allows us to send information using parameters as key-value pairs.
+
+A query string typically follows a ? in the URL, which in this exercise would be right after https://api.datamuse.com/words?. The key-value pair parameters are sent in the form key=value, and each pair is separated by an & symbol. This will also be covered in the next exercise.
+
+In this exercise, the first parameter of our query string is rel_rhy, and the value of this parameter will be set to whatever text is inputted into the text field.
+
+
 ##XHR GET Requests IV
 In the previous exercise, you made a GET request to the Datamuse API to find words that rhyme. In this exercise, we will create a request to set a topic and find adjectives that describe the input word using query strings.
 A query string contains additional information to be sent with a request. The Datamuse API allows us to retrieve more specific data with query strings attached to the request URL.
@@ -392,4 +486,163 @@ Build shortenUrl() or getSuggestions() from scratch.
 Manipulate the object that is returned to display something different in the browser.
 Use a different API to make a GET or POST request.
 Create query strings to yield different results.
+helperFunction.js
+```
+// wordSmith helperFunctions are on lines 4 - 50
+// byteSize helperFunctions are on lines 52 - 76
+
+// Formats Response to look presentable on webpage
+const renderWordResponse = (res) => {
+  // Handles if res is falsey
+  if(!res){
+    console.log(res.status);
+  }
+  // In case res comes back as a blank array
+  if(!res.length){
+    responseField.innerHTML = "<p>Try again!</p><p>There were no suggestions found!</p>";
+    return;
+  }
+
+  // Creates an array to contain the HTML strings
+  let wordList = []
+  // Loops through the response and maxxing out at 10
+  for(let i = 0; i < Math.min(res.length, 10); i++){
+    // Creates a list of words
+    wordList.push(`<li>${res[i].word}</li>`);
+  }
+  // Joins the array of HTML strings into one string
+  wordList = wordList.join("");
+
+  // Manipulates responseField to render the modified response
+  responseField.innerHTML = `<p>You might be interested in:</p><ol>${wordList}</ol>`;
+  return;
+}
+
+// Renders response before it is modified
+const renderRawWordResponse = (res) => {
+  // Takes the first 10 words from res
+  let trimmedResponse = res.slice(0, 10);
+  // Manipulates responseField to render the unformatted response
+  responseField.innerHTML = `<text>${JSON.stringify(trimmedResponse)}</text>`;
+}
+
+// Renders the JSON that was returned when the Promise from fetch resolves.
+const renderJsonWordResponse = (res) => {
+  // Creating an empty object to store the JSON in key-value pairs
+  let rawJson = {};
+  for(let key in response){
+    rawJson[key] = response[key];
+  }
+  // Converting JSON into a string and adding line breaks to make it easier to read
+  rawJson = JSON.stringify(rawJson).replace(/,/g, ", \n");
+  // Manipulates responseField to show the returned JSON.
+  responseField.innerHTML = `<pre>${rawJson}</pre>`;
+}
+
+// Manipulates responseField to render a formatted and appropriate message
+const renderByteResponse = (res) => {
+  if(res.errors){
+    // Will change the HTML to show this error message if the response had an error
+    responseField.innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
+  } else {
+    // If there was no error, then the HTML will show this message
+    responseField.innerHTML = `<p>Your shortened url is: </p><p> ${res.shortUrl} </p>`;
+  }
+}
+
+// Manipulates responseField to render an unformatted response
+const renderRawByteResponse = (res) => {
+  if(res.errors){
+    // Changes the HTML to show this error message if the response had an error
+    responseField.innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
+  } else {
+    // Changes the HTML to show this raw response if there was no error
+    // Formats the response into a more organized structure
+    let structuredRes = JSON.stringify(res).replace(/,/g, ", \n");
+    structuredRes = `<pre>${structuredRes}</pre>`;
+
+    responseField.innerHTML = `${structuredRes}`;
+  }
+}
+
+```
+main.js
+```
+// NOTE: wordSmith functions from lines 4 - 39
+// NOTE: byteSize functions from lines 41 - 76 (remember to add your API key!)
+
+// information to reach API
+const dataMuseUrl = 'https://api.datamuse.com/words?';
+const queryParams = 'rel_jjb=';
+
+// selecting page elements
+const inputField = document.querySelector('#input');
+const submit = document.querySelector('#submit');
+const responseField = document.querySelector('#responseField');
+
+// AJAX function
+const getSuggestions = () => {
+  const wordQuery = inputField.value;
+  const endPoint = dataMuseUrl + queryParams + wordQuery;
+
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      renderWordResponse(xhr.response);
+    }
+  };
+  xhr.open('GET', endPoint);
+  xhr.send();
+}
+
+// clear previous results and display results to webpage
+const displaySuggestions = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  };
+  getSuggestions();
+};
+
+submit.addEventListener('click', displaySuggestions);
+
+// information to reach Rebrandly API
+const apiKey = '<Your API Key>';
+const rebrandlyUrl = 'https://api.rebrandly.com/v1/links';
+
+// element selector
+const shortenButton = document.querySelector('#shorten');
+
+// AJAX functions
+const shortenUrl = () => {
+  const urlToShorten = inputField.value;
+  const data = JSON.stringify({destination: urlToShorten});
+
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      renderByteResponse(xhr.response);
+    }
+  };
+  xhr.open('POST', rebrandlyUrl);
+  xhr.setRequestHeader('Content-type', 'application/json');
+	xhr.setRequestHeader('apikey', apiKey);
+  xhr.send(data);
+}
+
+// Clear page and call AJAX functions
+const displayShortUrl = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  };
+  shortenUrl();
+};
+
+shortenButton.addEventListener('click', displayShortUrl);
+```
 
