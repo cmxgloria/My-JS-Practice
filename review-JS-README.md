@@ -151,8 +151,90 @@ or
 const plantNeedsWater = day => day === 'Wednesday' ? true : false;
 ```
 
+## Scope
+The variable defind outside the block call global scope , if inside the block called block scope.
+
+block scope
+```
+const logSkyColor = () => {
+  let color = 'blue'; 
+  console.log(color); // blue 
+};
+
+logSkyColor(); // blue 
+console.log(color); // ReferenceError
+```
+
+another sample
+```
+const logVisibleLightWaves () => {
+  const lightWave = 'Moonlight';
+  console.log(lightWave);
+}
+logVisibleLightWave();
+console.log(lightWave);
+//Error
+```
+Scope pollution not good
+```
+let num = 50;
+
+const logNum = () => {
+  num = 100; // Take note of this line of code
+  console.log(num);
+};
+
+logNum(); // Prints 100
+console.log(num); // Prints 100
+```
+another sample
+```
+const satellite = 'The Moon';
+const galaxy = 'The Milky Way';
+let stars = 'North Star';
 
 
+const callMyNightSky = () => {
+  stars = 'Sirius';
+	return 'Night Sky: ' + satellite + ', ' + stars + ', ' + galaxy;
+};
+console.log();
+console.log(stars);
+//North Star
+```
+
+Practice Good Scoping
+```
+const logSkyColor = () => {
+  const dusk = true;
+  let color = 'blue'; 
+  if (dusk) {
+    let color = 'pink';
+    console.log(color); // pink
+  }
+  console.log(color); // blue 
+};
+
+console.log(color); // ReferenceError
+```
+another sample
+```
+const logVisibleLightWaves = () => {
+  let lightWaves = 'Moonlight';
+	let region = 'The Arctic';
+  // Add if statement here:
+  if (region === 'The Arctic'){
+    let lightWaves = 'Northern Lights';
+    console.log(lightWaves);
+  }
+  
+  console.log(lightWaves);
+};
+
+logVisibleLightWaves();
+//Northern Lights
+Moonlight
+```
 
 
 
