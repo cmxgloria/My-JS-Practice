@@ -57,6 +57,161 @@ switch(athleteFinalPosition){
 
 
 ## Function
+We should also be aware of the hoisting feature in JavaScript which allows access to function declarations before they’re defined.
+
+Take a look at example of hoisting:
+```
+console.log(greetWorld()); // Output: Hello, World!
+
+function greetWorld() {
+  console.log('Hello, World!');
+}
+```
+
+parameters
+```
+function sayThanks(name) {
+  console.log('Thank you for your purchase ' + name + '! We appreciate your business.');
+}
+
+sayThanks('Cole');
+```
+
+Default Parameters
+```
+function greeting (name = 'stranger') {
+  console.log(`Hello, ${name}!`)
+}
+
+greeting('Nick') // Output: Hello, Nick!
+greeting() // Output: Hello, stranger!
+```
+
+Return
+```
+function monitorCount(row, columns){
+ const numOfMonitors=row*columns;
+  return numOfMonitors;
+}
+console.log((monitorCount(5,4)));
+```
+
+Helper Function
+```
+function multiplyByNineFifths(number) {
+  return number * (9/5);
+};
+
+function getFahrenheit(celsius) {
+  return multiplyByNineFifths(celsius) + 32;
+};
+
+getFahrenheit(15); // Returns 59
+```
+another sample
+```
+function monitorCount(rows, columns) {
+  return rows * columns;
+}
+
+function costOfMonitors(rows,columns){
+  return monitorCount(rows,columns)*200;
+}
+const totalCost=costOfMonitors(5,4);
+console.log(totalCost);
+```
+
+Function Expression
+```
+const plantNeedsWater = function(day) {
+  if(day === 'Wednesday'){
+    return true;
+  } else {
+    return false;
+  }
+};
+
+plantNeedsWater('Tuesday');
+
+console.log(plantNeedsWater('Tuesday'));
+```
+
+Arrow function
+```
+const rectangleArea = (width, height) => {
+  let area = width * height;
+  return area;
+};
+```
+
+Concise Body Arrow Functions
+```
+const squareNum = num => num * num; 
+or 
+const plantNeedsWater = day => day === 'Wednesday' ? true : false;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
