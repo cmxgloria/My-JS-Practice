@@ -269,7 +269,109 @@ console.log(concept);
 ['arrays', 'can', 'be']
 ```
 
+## Loop 
+Looping through Arrays
+```
+const vacationSpots = ['Bali', 'Paris', 'Tulum'];
 
+// Write your code below
+for (let i = 0; i < vacationSpots.length; i++ ){
+  console.log('I would love to visit ' + vacationSpots[i]);
+}
+//I would love to visit Bali
+I would love to visit Paris
+I would love to visit Tulum
+```
+ 
+Nested Array
+```
+const myArray = [6, 19, 20];
+const yourArray = [19, 81, 2];
+for (let i = 0; i < myArray.length; i++) {
+  for (let j = 0; j < yourArray.length; j++) {
+    if (myArray[i] === yourArray[j]) {
+      console.log('Both loops have the number: ' + yourArray[j])
+    }
+  }
+};
+```
+another sample
+```
+// Write your code below
+let bobsFollowers = ['Joe', 'Marta', 'Sam', 'Erin'];
+let tinasFollowers = ['Sam', 'Marta', 'Elle'];
+let mutualFollowers = [];
+
+for(let i=0; i<bobsFollowers.length; i++){
+  for(let j=0; j<tinasFollowers.length; j++){
+    if(bobsFollowers[i]===tinasFollowers[j]){
+      mutualFollowers.push(bobsFollowers[i]);
+    }
+  }
+  
+}
+console.log(bobsFollowers);
+console.log(tinasFollowers);
+console.log(mutuaFollowers);
+
+//(4) [
+"Joe" ,
+"Marta" ,
+"Sam" ,
+"Erin"
+]
+(3) [
+"Sam" ,
+"Marta" ,
+"Elle"
+]
+error: Uncaught ReferenceError: mutuaFollowers is not defined
+```
+
+The While Loop 
+```
+const cards = ['diamond', 'spade', 'heart', 'club'];
+let currentCard;
+
+while ( currentCard != 'spade') {
+  currentCard = cards[Math.floor(Math.random() * 4)];
+	console.log(currentCard);
+}
+
+
+```
+Do...While Statements
+```
+let countString = '';
+let i = 0;
+
+do {
+  countString = countString + i;
+  i++;
+} while (i < 5);
+
+console.log(countString);
+```
+The break keyword
+```
+for(let i=0; i<99;i ++){
+  if(i>2){
+ break;
+  }
+   console.log('banana');
+}
+console.log('orange');
+//Banana.
+Banana.
+Banana.
+Orange you glad I broke out the loop!
+```
+
+A nested for loop is a loop inside another loop
+while loops allow for different types of stopping conditions
+Stopping conditions are crucial for avoiding infinite loops.
+do...while loops run code at least once— only checking the stopping condition after the first execution
+The break keyword allows programs to leave a loop during the execution of its block
 
 
 
