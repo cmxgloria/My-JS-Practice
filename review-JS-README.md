@@ -849,7 +849,8 @@ console.log(newRobot);
   armor: 'Steel-plated',
   energyLevel: 75 }
   ```
-Let’s review the concepts covered in this lesson:
+  
+review
 
 The object that a method belongs to is called the calling object.
 The this keyword refers the calling object and can be used to access properties of the calling object.
