@@ -467,7 +467,35 @@ const onlyNumbers = things.filter(thing => {
 console.log(onlyNumbers);
 
 ```
+The Map method
+```
+const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+const secretMessage = animals.map(animal => animal[0]);
+console.log(secretMessage.join(''));
+//HelloWorld
+```
 
+The .reduce() Method
+```
+const newNumbers = [1, 3, 5, 7];
+
+const newSum = newNumbers.reduce((accumulator, currentValue) => {
+  console.log('The value of accumulator: ', accumulator);
+  console.log('The value of currentValue: ', currentValue);
+  return accumulator + currentValue;
+}, 10);
+
+console.log(newSum);
+//The value of accumulator:  10
+The value of currentValue:  1
+The value of accumulator:  11
+The value of currentValue:  3
+The value of accumulator:  14
+The value of currentValue:  5
+The value of accumulator:  19
+The value of currentValue:  7
+26
+```
 
 
 
