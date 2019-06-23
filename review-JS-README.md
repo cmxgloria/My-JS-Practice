@@ -525,9 +525,136 @@ let returnAnyProp = (objectName, propName) => objectName[propName];
 
 returnAnyProp(spaceship, 'homePlanet'); // Returns 'Earth'
 ```
+Property Assignment
+```
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth',
+  color: 'silver',
+  'Secret Mission' : 'Discover life outside of Earth.'
+};
+spaceship.color = 'glorious gold';
 
+spaceship.numEngines = 9;
 
+delete spaceship['Secret Mission'];
+console.log(spaceship);
+//{ 'Fuel Type': 'Turbo Fuel',
+  homePlanet: 'Earth',
+  color: 'glorious gold',
+  numEngines: 9 }
+  ```
+  
+ Pass By Reference
+ ```
+ const spaceship = {
+  homePlanet : 'Earth',
+  color : 'silver'
+};
 
+let paintIt = obj => {
+  obj.color = 'glorious gold'
+};
+
+paintIt(spaceship);
+
+spaceship.color // Returns 'glorious gold'
+ ```
+Our function paintIt() permanently changed the color of our spaceship object. However, reassignment of the spaceship variable wouldn’t work in the same way:
+```
+let spaceship = {
+  homePlanet : 'Earth',
+  color : 'red'
+};
+let tryReassignment = obj => {
+  obj = {
+    identified : false, 
+    'transport type' : 'flying'
+  }
+  console.log(obj) // Prints {'identified': false, 'transport type': 'flying'}
+
+};
+tryReassignment(spaceship) // The attempt at reassignment does not work.
+spaceship // Still returns {homePlanet : 'Earth', color : 'red'};
+
+spaceship = {
+  identified : false, 
+  'transport type': 'flying'
+}; // Regular reassignment still works.
+```
+
+another sample
+```
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth'
+};
+
+// Write your code below
+
+let greenEnergy = obj => {
+  obj['Fuel Type'] = 'avocado oil';
+}
+
+let remotelyDisable = obj => {
+  obj.disabled = true;
+}
+
+greenEnergy(spaceship);
+
+remotelyDisable(spaceship);
+
+console.log(spaceship)
+//{ 'Fuel Type': 'avocado oil',
+  homePlanet: 'Earth',
+  disabled: true }
+  ```
+  
+  Looping Through Objects
+  Our for...in will iterate through each element of the spaceship.crew object. In each iteration, the variable crewMember is set to one of spaceship.crew‘s keys, enabling us to log a list of crew members’ role and name.
+  ```
+  let spaceship = {
+    crew: {
+    captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+        },
+    'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+        },
+    medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+    translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+        }
+    }
+}; 
+
+// Write your code below
+
+for (let crewMember in spaceship.crew) {
+  console.log(`${crewMember}: ${spaceship.crew[crewMember].name}`)
+};
+
+for (let crewMember in spaceship.crew) {
+  console.log(`${spaceship.crew[crewMember].name}: ${spaceship.crew[crewMember].degree}`)
+};
+// captain: Lily
+chief officer: Dan
+medic: Clementine
+translator: Shauna
+Lily: Computer Engineering
+Dan: Aerospace Engineering
+Clementine: Physics
+Shauna: Conservation Science
+```
 
 
 
