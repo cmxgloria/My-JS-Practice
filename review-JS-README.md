@@ -671,6 +671,19 @@ console.log(robot.provideInfo());
 //I am 1E78V2 and my current energy level is 100.
 ```
 Arrow Functions and this
+```
+const goat = {
+  dietType: 'herbivore',
+  makeSound() {
+    console.log('baaa');
+  },
+  diet: () => {
+    console.log(this.dietType);
+  }
+};
+
+goat.diet(); // Prints undefined
+```
 
 Privacy
 ```
