@@ -830,6 +830,10 @@ or
 ```
 const { residence } = vampire; 
 console.log(residence); // Prints 'Transylvania'
+We can even use destructured assignment to grab nested properties of an object:
+
+const { day } = vampire.preferences; 
+console.log(day); // Prints 'stay inside'
 ```
 ```
 const robot = {
