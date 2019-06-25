@@ -725,6 +725,7 @@ const robot = {
 console.log(robot.energyLevel);
 ///My current energy level is 100.
 ```
+Another thing to keep in mind when using getter (and setter) methods is that properties cannot share the same name as the getter/setter function. If we do so, then calling the method will result in an infinite call stack error. One workaround is to add an underscore before the property name like we did in the example above.
 
 Setters
 ```
@@ -753,6 +754,24 @@ console.log(robot.numOfSensors);
 
 
 //100
+```
+another sample and explaination
+```
+const person = {
+  _age: 37,
+  set age(newAge){
+    if (typeof newAge === 'number'){
+      this._age = newAge;
+    } else {
+      console.log('You must assign a number to age');
+    }
+  }
+};
+person.age = 40;
+console.log(person._age); // Logs: 40
+person.age = '40'; // Logs: You must assign a number to age
+person._age = 'forty-five'
+console.log(person._age); // Prints forty-five
 ```
 
 Factory Functions
