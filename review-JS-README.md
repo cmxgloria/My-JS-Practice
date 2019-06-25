@@ -689,6 +689,9 @@ Arrow functions inherently bind, or tie, an already defined this value to the fu
 To read more about either arrow functions or the global object check out the MDN documentation of the global object and arrow functions.
 
 The key takeaway from the example above is to avoid using arrow functions when using this in a method!
+ Explain more
+ https://discuss.codecademy.com/t/why-do-arrow-functions-exist-and-how-could-you-use-them-in-objects-if-you-wanted-to/367438
+ 
 
 Privacy
 ```
