@@ -303,3 +303,45 @@ console.log(nurseOlynyk.certifications);
 [ 'Trauma', 'Pediatrics', 'Genetics' ]
 
 ```
+
+
+## BROWSER COMPATIBILITY AND TRANSPILATION
+
+caniuse.com 
+
+Transpilation With Babel
+
+npm init
+We install Babel with the following two commands:
+
+$ npm install babel-cli -D
+$ npm install babel-preset-env -D
+The babel-cli package includes command line Babel tools, and the babel-preset-env package has the code that maps any JavaScript feature, ES6 and above (ES6+), to ES5.
+
+The -D flag instructs npm to add each package to a property called devDependencies in package.json. Once the project’s dependencies are listed in devDependencies, other developers can run your project without installing each package separately. Instead, they can simply run npm install — it instructs npm to look inside package.json and download all of the packages listed in devDependencies.
+Once you npm install packages, you can find the Babel packages and all their dependencies in the node_modules folder. The new directory structure contains the following:
+
+project
+|_ node_modules
+|___ .bin
+|___ ...
+|_ src
+|___ main.js
+|_ package.json
+The ... in the file structure above is a placeholder for 100+ packages that npm installed.
+
+Babel Source Lib
+
+
+...
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "babel src -d lib"
+}
+In the "scripts" object above, we add a property called "build". The property’s value, "babel src -d lib", is a command line method that transpiles ES6+ code to ES5. Let’s consider each argument in the method call:
+
+babel — The Babel command call responsible for transpiling code.
+src — Instructs Babel to transpile all JavaScript code inside the src directory.
+-d — Instructs Babel to write the transpiled code to a directory.
+lib — Babel writes the transpiled code to a directory called lib.
+In the next exercise, we’ll run the babel src -d lib method to transpile our ES6+ code.
