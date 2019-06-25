@@ -345,3 +345,20 @@ src — Instructs Babel to transpile all JavaScript code inside the src director
 -d — Instructs Babel to write the transpiled code to a directory.
 lib — Babel writes the transpiled code to a directory called lib.
 In the next exercise, we’ll run the babel src -d lib method to transpile our ES6+ code.
+
+
+## INTERMEDIATE JAVASCRIPT MODULES
+module.exports
+```
+let Menu = {};
+Menu.specialty = "Roasted Beet Burger with Mint Sauce";
+
+module.exports = Menu; 
+```
+
+let Menu = {}; creates the object that represents the module Menu. The statement contains an uppercase variable named Menu which is set equal to an object.
+Menu.specialty is defined as a property of the Menu module. We add data to the Menu object by setting properties on that object and giving the properties a value.
+"Roasted Beet Burger with Mint Sauce"; is the value stored in the Menu.specialty property.
+module.exports = Menu; exports the Menu object as a module. module is a variable that represents the module, and exports exposes the module as an object.
+
+
