@@ -633,7 +633,12 @@ import is a keyword that imports any object, function, or data type.
 
 
 
+## Promise
+Constructing a Promise Object
+Let’s construct a promise! To create a new Promise object, we use the new keyword and the Promise constructor method:
 
+const executorFunction = (resolve, reject) => { };
+const myFirstPromise = new Promise(executorFunction);
 
 
 
