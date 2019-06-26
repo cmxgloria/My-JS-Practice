@@ -542,16 +542,94 @@ function displaySpeedRangeStatus() {
 
 displaySpeedRangeStatus();
 ```
+Export as
+
+Named exports also conveniently offer a way to change the name of variables when we export or import them. We can do this with the as keyword.
+
+Let’s see how this works. In our menu.js example
+```
+let specialty = '';
+let isVegetarian = function() {
+}; 
+let isLowSodium = function() {
+}; 
+
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+```
+
+import as
+import { chefsSpecial, isVeg } from './menu';
+In orders.js
+
+We import chefsSpecial and isVeg from the Menu object.
+Here, note that we have an option to alias an object that was not previously aliased when exported. For example, the isLowSodium object that we exported could be aliased with the as keyword when imported: import {isLowSodium as saltFree} from 'Menu';
+Another way of using aliases is to import the entire module as an alias:
+
+import * as Carte from './menu';
+
+Carte.chefsSpecial;
+Carte.isVeg();
+Carte.isLowSodium(); 
+This allows us to import an entire module from menu.js as an alias Carte.
+In this example, whatever name we exported would be available to us as properties of that module. For example, if we exported the aliases chefsSpecial and isVeg, these would be available to us. If we did not give an alias to isLowSodium, we would call it as defined on the Carte module.
 
 
+Combining Export Statements
+We can also use named exports and default exports together. In menu.js:
+```
+let specialty = '';
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+function isGlutenFree() {
+};
+
+export { specialty as chefsSpecial, isVegetarian as isVeg };
+export default isGlutenFree;
+```
+Here we use the keyword export to export the named exports at the bottom of the file. Meanwhile, we export the isGlutenFree variable using the export default syntax.
+
+This would also work if we exported most of the variables as declared and exported others with the export default syntax.
+```
+export let Menu = {};
+
+export let specialty = '';
+export let isVegetarian = function() {
+}; 
+export let isLowSodium = function() {
+}; 
+let isGlutenFree = function() {
+};
+
+export default isGlutenFree;
+```
+Here we use the export keyword to export the variables upon declaration, and again export the isGlutenFree variable using the export default syntax
+
+While it’s better to avoid combining two methods of exporting, it is useful on occasion. For example, if you suspect developers may only be interested in importing a specific function and won’t need to import the entire default export.
 
 
+Combining Import Statements
+We can import the collection of objects and functions with the same data.
 
+We can use an import keyword to import both types of variables as such:
+```
+import { specialty, isVegetarian, isLowSodium } from './menu';
 
+import GlutenFree from './menu';
+```
+## review
 
+Modules in JavaScript are reusable pieces of code that can be exported from one program and imported for use in another program.
 
+module.exports exports the module for use in another program.
+require() imports the module for use in the current program.
+ES6 introduced a more flexible, easier syntax to export modules:
 
-
+default exports use export default to export JavaScript objects, functions, and primitive data types.
+named exports use the export keyword to export data in variables.
+named exports can be aliased with the as keyword.
+import is a keyword that imports any object, function, or data type.
 
 
 
