@@ -348,6 +348,7 @@ In the next exercise, we’ll run the babel src -d lib method to transpile our E
 
 
 ## INTERMEDIATE JAVASCRIPT MODULES
+
 module.exports
 ```
 let Menu = {};
@@ -360,5 +361,36 @@ let Menu = {}; creates the object that represents the module Menu. The statement
 Menu.specialty is defined as a property of the Menu module. We add data to the Menu object by setting properties on that object and giving the properties a value.
 "Roasted Beet Burger with Mint Sauce"; is the value stored in the Menu.specialty property.
 module.exports = Menu; exports the Menu object as a module. module is a variable that represents the module, and exports exposes the module as an object.
+
+require()
+```
+const Menu = require('./menu.js');
+
+function placeOrder() {
+  console.log('My order is: ' + Menu.specialty);
+}
+
+placeOrder();
+```
+
+module.exports II
+We can also wrap any collection of data and functions in an object, and export the object using module.exports. In menu.js, we could write:
+
+module.exports = {
+  specialty: "Roasted Beet Burger with Mint Sauce",
+  getSpecialty: function() {
+    return this.specialty;
+  } 
+}; 
+In the above code, notice:
+
+module.exports exposes the current module as an object.
+specialty and getSpecialty are properties on the object.
+Then in order.js, we write:
+
+const Menu = require('./menu.js');
+
+console.log(Menu.getSpecialty());
+Here we can still access the behavior in the Menu module.
 
 
