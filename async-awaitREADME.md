@@ -101,7 +101,10 @@ withAsync(100)
 })
  
 ```
+//Write an async function, withAsync() which reproduces the functionality of withConstructor(). Though your function will return a promise, it should not construct the promise using the new keyword. Instead, it should rely on the fact that an async function automatically returns a promise.
+
 ##The await Operator
+The await keyword can only be used inside an async function. await is an operator: it returns the resolved value of a promise. Since promises resolve in an indeterminate amount of time, await halts, or pauses, the execution of our async function until a given promise is resolved.
 ```
 async function asyncFuncExample(){
   let resolvedValue = await myPromise();
@@ -275,6 +278,7 @@ makeBeans();
 ```
 ##Handling Errors
 With async...await, we use try...catchstatements for error handling. By using this syntax, not only are we able to handle errors in the same way we do with synchronous code, but we can also catch both synchronous and asynchronous errors. This makes for easier debugging!
+
 ```
 async function usingTryCatch() {
  try {
@@ -299,7 +303,8 @@ rejectedPromise.catch((rejectValue) => {
 console.log(rejectValue);
 })
 ```
-Two same sample with various version
+library.js  as below
+
 ```
 //This function returns true 50% of the time.
 let randomSuccess = () => {
@@ -328,6 +333,7 @@ let cookBeanSouffle = () => {
  
 module.exports = cookBeanSouffle;
 ```
+
 ```
 const cookBeanSouffle = require('./library.js');
  
@@ -346,6 +352,7 @@ async function hostDinnerParty() {
  
 hostDinnerParty();
 ```
+
 ##Handling Independent Promises
 Remember that await halts the execution of our async function. This allows us to conveniently write synchronous-style code to handle dependent promises. But what if our async function contains multiple promises which are not dependent on the results of one another to execute?
 ```
@@ -362,6 +369,7 @@ console.log(await firstPromise, await secondPromise);
 }
 ```
 Sample
+app.js
 ```
 let {cookBeans, steamBroccoli, cookRice, bakeChicken} = require('./library.js')
  
@@ -378,7 +386,8 @@ async function serveDinner() {
 serveDinner()
  
 ```
-Same as below version
+library.js
+
 ```
 let cookBeans = () => {
   return new Promise ((resolve, reject) => {
@@ -414,17 +423,20 @@ let bakeChicken = () => {
  
 module.exports = {cookBeans, steamBroccoli, cookRice, bakeChicken}
 ```
+
 ##Await Promise.all()
  
 Another way to take advantage of concurrency when we have multiple promises which can be executed simultaneously is to await a Promise.all().
 We can pass an array of promises as the argument to Promise.all(), and it will return a single promise. This promise will resolve when all of the promises in the argument array have resolved. This promise’s resolve value will be an array containing the resolved values of each promise from the argument array.
 In our above example, we await the resolution of a Promise.all(). This Promise.all() was invoked with an argument array containing four promises (returned from required-in functions). Next, we loop through our resultArray, and log each item to the console. The first element in resultArray is the resolved value of the asyncTask1() promise, the second is the value of the asyncTask2() promise, and so on.
+```
 async function asyncPromAll() {
   const resultArray = await Promise.all([asyncTask1(), asyncTask2(), asyncTask3(), asyncTask4()]);
   for (let i = 0; i<resultArray.length; i++){
     console.log(resultArray[i]); 
   }
 }
+```
 Promise.all() allows us to take advantage of asynchronicity— each of the four asynchronous tasks can process concurrently. Promise.all() also has the benefit of failing fast, meaning it won’t wait for the rest of the asynchronous actions to complete once any one has rejected. As soon as the first promise in the array rejects, the promise returned from Promise.all() will reject with that reason. As it was when working with native promises, Promise.all() is a good choice if multiple asynchronous tasks are all required, but none must wait for any other before executing.
 2 samples in library.js and app.js
 ```
@@ -484,8 +496,56 @@ await returns the resolved value of the awaited promise.
 We can write multiple await statements to produce code that reads like synchronous code.
 We use try...catch statements within our async functions for error handling.
 We should still take advantage of concurrency by writing async functions that allow asynchronous actions to happen in concurrently whenever possible.
- 
- 
+ library.js
+ ```
+ let cookBeans = () => {
+  return new Promise ((resolve, reject) => {
+   setTimeout(()=>{
+     resolve('beans')
+   }, 1000)
+ })
+}
+
+let steamBroccoli = () => {
+ return new Promise ((resolve, reject) => {
+   setTimeout(()=>{
+     resolve('broccoli')
+   }, 1000)
+ })
+}
+
+let cookRice = () => {
+ return new Promise ((resolve, reject) => {
+   setTimeout(()=>{
+     resolve('rice')
+   }, 1000)
+ })
+}
+
+let bakeChicken = () => {
+ return new Promise ((resolve, reject) => {
+   setTimeout(()=>{
+     resolve('chicken')
+   }, 1000)
+ })
+}
+
+module.exports = {cookBeans, steamBroccoli, cookRice, bakeChicken}```
+
+app.js
+```
+let {cookBeans, steamBroccoli, cookRice, bakeChicken} = require('./library.js')
+
+// Write your code below:
+async function serveDinnerAgain(){
+  let foodArray = await Promise.all([steamBroccoli(), cookRice(), bakeChicken(), cookBeans()]); 
+  
+  console.log(`Dinner is served. We're having ${foodArray[0]}, ${foodArray[1]}, ${foodArray[2]}, and ${foodArray[3]}.`)
+}
+
+serveDinnerAgain()
+
+```
  
  
  

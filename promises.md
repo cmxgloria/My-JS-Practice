@@ -1,5 +1,5 @@
-‘’’’JAVASCRIPT PROMISES
--Introduction
+#JAVASCRIPT PROMISES
+-##Introduction
 An asynchronous operation is one that allows the computer to “move on” to other tasks while waiting for the asynchronous operation to complete. 
 A Promiseobject can be in one of three states:
 Pending: The initial state— the operation has not completed yet.
@@ -7,15 +7,16 @@ Fulfilled: The operation has completed successfully and the promise now has a re
 Rejected: The operation has failed and the promise has a reason for the failure. This reason is usually an Error of some kind.
 -Constructing a Promise Object
 
-To create a new Promiseobject, we use the new keyword and the Promiseconstructor method:
-
+To create a n`ew Promiseobject`, we use the `new `keyword and the `Promise constructor method`:
+```
 const executorFunction=(resolve, reject)=>{
   
 };
 const myFirstPromise=new
 Promise(executorFunction);
+```
 Let’s look at an example executor function in a Promise constructor:
-
+```
 const executorFunction=(resolve, reject)=>{
  if(someCondition){
    resolve('I resolved');
@@ -25,8 +26,9 @@ const executorFunction=(resolve, reject)=>{
 }
 const myFirstPromise=new
 Promise(executorFunction);
-
+```
 Sample
+```
 const myExecutor = (resolve, reject) => {
     if (inventory.sunglasses > 0) {
         resolve('Sunglasses order processed.');
@@ -42,35 +44,38 @@ const orderSunglasses = () => {
 const orderPromise = orderSunglasses();
 
 console.log(orderPromise);              
+```
 
 -The Node setTimeout() Function
 
-setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay. setTimeout() has two parameters: a callback function and a delay in milliseconds.
-
+`setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay. setTimeout() has two parameters: a callback function and a delay in milliseconds.`
+```
 const delayedHello=()=>{
   console.log('Hi!This is an asynchronous greeting!');
 };
 setTimeOut(delayedHello, 2000);
-
+```
 Before it can run, any synchronous code from the program will run. Next, any code in front of it in the line will run. This means it might be more than two seconds before delayedHello() is actually executed.        
 Let’s look at how we’ll be using setTimeout() to construct asynchronous promises:
+```
 const returnPromiseFunction=()=>{
   return new Promise(resolve, reject)=>{
     setTimeOut(()=>{resolve('I resolved!')}, 1000);
   };
 };
 const prom=returnPromiseFuncdtion();
-
+```
 In the example code, we invoked returnPromiseFunction() which returned a promise. We assigned that promise to the variable prom. Similar to the asynchronous promises you may encounter in production, prom will initially have a status of pending.
 
--Consuming Promises
+##Consuming Promises
 Promise objects come with an aptly named .then() method
-.then() is a higher-order function— it takes two callback functions as arguments. We refer to these callbacks as handlers. When the promise settles, the appropriate handler will be invoked with that settled value.
-The first handler, sometimes called onFulfilled, is a success handler, and it should contain the logic for the promise resolving.
-The second handler, sometimes called onRejected, is a failure handler, and it should contain the logic for the promise rejecting.
+`.then() is a higher-order function— it takes two callback functions as arguments`. We refer to these callbacks as handlers. When the promise settles, the appropriate handler will be invoked with that settled value.
+`The first handler, sometimes called onFulfilled, is a success handler, and it should contain the logic for the promise resolving.
+The second handler, sometimes called onRejected, is a failure handler, and it should contain the logic for the promise rejecting.`
 We can invoke .then() with one, both, or neither handler! This allows for flexibility, but it can also make for tricky debugging. If the appropriate handler is not provided, instead of throwing an error, .then() will just return a promise with the same settled value as the promise it was called on. One important feature of .then() is that it always returns a promise.
 -The onFulfilled and onRejected Functions
 To handle a “successful” promise, or a promise that resolved, we invoke .then() on the promise, passing in a success handler callback function:
+```
 const prom= new Promise((resolve, reject)=>{
   resolve('Yay!');
 });
@@ -78,12 +83,13 @@ const handleSuccess=(resolveValue)=>{
   console.log(resolveValue);
 };
 prom.then(handleSuccess);//print: 'Yay!'
-
+```
 prom is a promise which will resolve to 'Yay!'.
 We define a function, handleSuccess(), which prints the argument passed to it.
 We invoke prom‘s .then() function passing in our handleSuccess() function.
 Since prom resolves, handleSuccess() is invoked with prom‘s resolved value, 'Yay', so 'Yay' is logged to the console.
 With typical promise consumption, we won’t know whether a promise will resolve or reject, so we’ll need to provide the logic for either case. We can pass both an onFulfilled and onRejected callback to .then().
+```
 let prom = new Promise((resolve, reject) => {
   let num = Math.random();
   if (num < .5 ){
@@ -102,6 +108,7 @@ const handleFailure = (rejectionReason) => {
 };
 
 prom.then(handleSuccess, handleFailure);
+```
 prom is a promise which will randomly either resolve with 'Yay!'or reject with 'Ohhh noooo!'.
 We pass two handler functions to .then(). The first will be invoked with 'Yay!' if the promise resolves, and the second will be invoked with 'Ohhh noooo!' if the promise rejects.
 ```app.js
@@ -121,7 +128,7 @@ const handleFailure = (rejectReason) => {
 checkInventory(order)
     .then(handleSuccess, handleFailure);
 
-
+//Write a function, handleFailure(). You’ll use this function later on as your failure handler. handleFailure() should have `one parameter`, `representing a rejection reason`. Inside the body of handleFailure(), `log the parameter to the console.`
 
 ```library.js
 const inventory = {
@@ -187,6 +194,7 @@ checkInventory(order)
 	.catch(handleFailure);
 
 ```
+//.then and .catch inside pass the handlers variables
 
 ##Chaining Multiple Promises
 -This process of chaining promises together is called composition. Promises are designed with composition in mind! Here’s a simple promise chain in code:
@@ -199,7 +207,95 @@ firstPromiseFunction()
   console.log(secondResolveVal);
 });
 ```
+//explain:We invoke a function firstPromiseFunction() which returns a promise.
+We invoke .then() with an anonymous function as the success handler.
+Inside the success handler we return a new promise— the result of invoking a second function, secondPromiseFunction() with the first promise’s resolved value.
+We invoke a second .then() to handle the logic for the second promise settling.
+Inside that .then(), we have a success handler which will log the second promise’s resolved value to the console.
 In order for our chain to work properly, we had to return the promise secondPromiseFunction(firstResolveVal). This ensured that the return value of the first .then() was our second promise rather than the default return of a new promise with the same settled value as the initial.
+
+library.js
+```
+const store = {
+  sunglasses: {
+    inventory: 817, 
+    cost: 9.99
+  },
+  pants: {
+    inventory: 236, 
+    cost: 7.99
+  },
+  bags: {
+    inventory: 17, 
+    cost: 12.99
+  }
+};
+
+const checkInventory = (order) => {
+  return new Promise ((resolve, reject) => {
+   setTimeout(()=> {  
+   const itemsArr = order.items;  
+   let inStock = itemsArr.every(item => store[item[0]].inventory >= item[1]);
+   
+   if (inStock){
+     let total = 0;   
+     itemsArr.forEach(item => {
+       total += item[1] * store[item[0]].cost
+     });
+     console.log(`All of the items are in stock. The total cost of the order is ${total}.`);
+     resolve([order, total]);
+   } else {
+     reject(`The order could not be completed because some items are sold out.`);
+   }     
+}, generateRandomDelay());
+ });
+};
+
+const processPayment = (responseArray) => {
+  const order = responseArray[0];
+  const total = responseArray[1];
+  return new Promise ((resolve, reject) => {
+   setTimeout(()=> {  
+   let hasEnoughMoney = order.giftcardBalance >= total;
+   // For simplicity we've omited a lot of functionality
+   // If we were making more realistic code, we would want to update the giftcardBalance and the inventory
+   if (hasEnoughMoney) {
+     console.log(`Payment processed with giftcard. Generating shipping label.`);
+     let trackingNum = generateTrackingNumber();
+     resolve([order, trackingNum]);
+   } else {
+     reject(`Cannot process order: giftcard balance was insufficient.`);
+   }
+   
+}, generateRandomDelay());
+ });
+};
+
+
+const shipOrder = (responseArray) => {
+  const order = responseArray[0];
+  const trackingNum = responseArray[1];
+  return new Promise ((resolve, reject) => {
+   setTimeout(()=> {  
+     resolve(`The order has been shipped. The tracking number is: ${trackingNum}.`);
+}, generateRandomDelay());
+ });
+};
+
+
+// This function generates a random number to serve as a "tracking number" on the shipping label. In real life this wouldn't be a random number
+function generateTrackingNumber() {
+  return Math.floor(Math.random() * 1000000);
+}
+
+// This function generates a random number to serve as delay in a setTimeout() since real asynchrnous operations take variable amounts of time
+function generateRandomDelay() {
+  return Math.floor(Math.random() * 2000);
+}
+
+module.exports = {checkInventory, processPayment, shipOrder};
+```
+app.js
 ```
 const {checkInventory, processPayment, shipOrder} = require('./library.js');
 
@@ -227,7 +323,7 @@ checkInventory(order)
 ```
 ##Avoiding Common Mistakes
 Mistake 1: Nesting promises instead of chaining them.
-
+```
 returnsFirstPromise()
 .then((firstResolveVal) => {
   return returnsSecondValue(firstResolveVal)
@@ -235,7 +331,9 @@ returnsFirstPromise()
       console.log(secondResolveVal);
     })
 })
+```
 Mistake 2: Forgetting to return a promise.
+```
 returnsFirstPromise()
 .then((firstResolveVal) => {
   returnsSecondValue(firstResolveVal)
@@ -243,6 +341,7 @@ returnsFirstPromise()
 .then((someVal) => {
   console.log(someVal);
 })
+```
 
 ```
 const {checkInventory, processPayment, shipOrder} = require('./library.js');
@@ -266,8 +365,9 @@ checkInventory(order)
 });
 ```
 ##Using Promise.all()
+To maximize efficiency we should use concurrency, multiple asynchronous operations happening together. With promises, we can do this with the function Promise.all().
 Promise.all() accepts an array of promises as its argument and returns a single promise. That single promise will settle in one of two ways:
-f every promise in the argument array resolves, the single promise returned from Promise.all()will resolve with an array containing the resolve value from each promise in the argument array.
+if every promise in the argument array resolves, the single promise returned from Promise.all()will resolve with an array containing the resolve value from each promise in the argument array.
 If any promise from the argument array rejects, the single promise returned from Promise.all() will immediately reject with the reason that promise rejected. This behavior is sometimes referred to as failing fast.
 ```
 let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
@@ -281,6 +381,33 @@ myPromises
   });
 ```
 Sample
+library.js
+```
+const checkAvailability = (itemName, distributorName) => {
+    console.log(`Checking availability of ${itemName} at ${distributorName}...`);
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (restockSuccess()) {
+                console.log(`${itemName} are in stock at ${distributorName}`)
+                resolve(itemName);
+            } else {
+                reject(`Error: ${itemName} is unavailable from ${distributorName} at this time.`);
+            }
+        }, 1000);
+    });
+};
+
+module.exports = { checkAvailability };
+
+
+// This is a function that returns true 80% of the time
+// We're using it to simulate a request to the distributor being successful this often
+function restockSuccess() {
+    return (Math.random() > .2);
+}
+```
+
+app.js
 ```
 const {checkAvailability} = require('./library.js');
 
