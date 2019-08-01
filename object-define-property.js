@@ -111,3 +111,18 @@ Object.defineProperties(task, {
 console.log(task.text + " Due: " + task.dueDate);
 //'New Task Due: 3/4/2018'
 
+'use strict';
+var task = {};
+Object.defineProperties(task, {
+  'text': {
+    value: 'New Task'
+  }
+});
+var descriptor = Object.getOwnPropertyDescriptor(task, 'text');
+console.log(descriptor);
+//{
+//value: "New Task" ,
+//writable: false ,
+//enumerable: false ,
+//configurable: false
+//}
