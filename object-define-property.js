@@ -33,4 +33,5 @@ Object.defineProperty(task, 'text', {
 });
 for (var f in task)
   console.log(f);
-//
+//'text'
+
