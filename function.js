@@ -73,6 +73,43 @@ var Employee = function (name, boss) {
 console.log(typeof Employee.prototype);
 //object
 
+var Employee = function (name, boss) {
+  this.name = name;
+  this.giveRaise = function () {
+
+  };
+};
+console.log(Employee.prototype === Object.prototype);
+//false
+
+var Employee = function (name, boss) {
+  this.name = name;
+};
+Employee.prototype.giveRaise = function () {
+
+};
+var e1 = new Employee('JJ');
+var e2 = new Employee('JV');
+console.log(e1.giveRaise === e2.giveRaise);
+//true
+
+
+var Employee = function (name) {
+  this.name = name;
+  this.salary = 50000;
+};
+Employee.prototype.giveRaise = function (raise) {
+  this.salary += raise;
+};
+var e1 = new Employee('JJ');
+var e2 = new Employee('JV');
+e1.giveRaise(8000);
+console.log(e1.salary);
+console.log(e2.salary);
+//58000
+//50000
+
+
 
 
 
