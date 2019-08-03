@@ -65,8 +65,17 @@ console.log(location.port);
 console.log(location.protocol);
 //'https:'
 location.assign('https://pluralsight.com')
-//(the browser will direct  https://pluralsight.com)
+  //(the browser will direct  https://pluralsight.com)
 
 
-
+  // body of HTML
+  < article id = 'article1' >
+    <h3>Title goes here</h3>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+</article >
+//Javascript
+var element = document.getElementsByTagName('p');
+console.log(element);
 
