@@ -76,6 +76,61 @@ location.assign('https://pluralsight.com')
     <p>p3</p>
 </article >
 //Javascript
-var element = document.getElementsByTagName('p');
-console.log(element);
+var elements = document.getElementsByTagName('p');
+console.log(elements);
+//[p,p,p]
+
+// body of HTML
+<article id='article1'>
+  <h3>Title goes here</h3>
+  <p>p1</p>
+  <p class='special'>p2</p>
+  <p class='special'>p3</p>
+</article>
+//Javascript
+var elements = document.getElementsByTagName('special');
+console.log(elements);
+//[p.special, p.special]
+
+// body of HTML
+<article id='article1' class='my custom'>
+  <h3>Title goes here</h3>
+  <p>p1</p>
+  <p class='special'>p2</p>
+  <p class='special'>p3</p>
+</article>
+//Javascript
+var a = document.getElementById('article1');
+console.log(a.getAttribute('class'));
+//my-custom-class
+
+// body of HTML
+<article id='article1' class='my-custom-class'>
+  <h3>Title goes here</h3>
+  <p>p1</p>
+  <p class='special'>p2</p>
+  <p class='special'>p3</p>
+</article>
+//Javascript
+var a = document.getElementById('article1');
+a.setAttribute('class', 'daynamic-style');
+console.log(a.getAttribute('class'));
+//daynamic-style
+
+// body of HTML
+<article id='article1' class='my-custom-class'>
+  <h4>Title goes here</h4>
+  <p>p1</p>
+</article>
+//Javascript
+var a = document.getElementById('article1');
+a.setAttribute('class', 'daynamic-style');
+console.log(a.childNodes);
+// [text, h4,text,p,text]
+
+
+
+
+
+
 
