@@ -49,5 +49,24 @@ else {
 }
 // a system ask for "Delete everything?"
 
+var result = prompt('your name.');
+console.log(result);
+//null or whatever you put in the prompt
+
+//those as below it will show different thing when there are different paths or website
+
+console.log(location.href);
+//'https://playcode.io/412102?tabs=script.js,preview,console'
+
+console.log(location.host);
+//'playcode.io'
+console.log(location.port);
+//""()
+console.log(location.protocol);
+//'https:'
+location.assign('https://pluralsight.com')
+//(the browser will direct  https://pluralsight.com)
+
+
 
 
