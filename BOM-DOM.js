@@ -93,7 +93,7 @@ console.log(elements);
 //[p.special, p.special]
 
 // body of HTML
-<article id='article1' class='my custom'>
+<article id='article1' class='my-custom-class'>
   <h3>Title goes here</h3>
   <p>p1</p>
   <p class='special'>p2</p>
@@ -127,6 +127,57 @@ var a = document.getElementById('article1');
 a.setAttribute('class', 'daynamic-style');
 console.log(a.childNodes);
 // [text, h4,text,p,text]
+
+// body of HTML
+<article id='article1' class='my-custom-class'>
+  <h3>Title goes here</h3>
+  <p>p1</p>
+  <p class='special'>p2</p>
+  <p class='special'>p3</p>
+</article>
+//Javascript
+var element = document.querySeletor('article1');
+console.log(element);
+//<article>...</article>
+
+// body of HTML
+<article id='article1' class='my-custom-class'>
+  <h3>Title goes here</h3>
+  <p>p1</p>
+  <p class='special'>p2</p>
+  <p class='special'>p3</p>
+</article>
+//Javascript
+var element = document.querySeletor('#article1');
+console.log(element);
+//<article>...</article>
+
+// body of HTML
+<article id='article1' class='my-custom-class'>
+  <h3>Title goes here</h3>
+  <p>p1</p>
+  <p class='special'>p2</p>
+  <p class='special'>p3</p>
+</article>
+//Javascript
+var element = document.querySeletor('.special');
+console.log(element);
+// <p class='special'>p2</p>, just run the first matching one
+
+// body of HTML
+<article id='article1' class='my-custom-class'>
+  <h3>Title goes here</h3>
+  <p>p1</p>
+  <p class='special'>p2</p>
+  <p class='special'>p3</p>
+</article>
+//Javascript
+var element = document.querySelectorAll('.special');
+console.log(element);
+// [p.special, p.special], it will show all 
+//(query selector is a modern way to access the DOM element)
+
+
 
 
 
