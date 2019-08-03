@@ -26,4 +26,13 @@ var id = setTimeout(function () {
 clearTimeout(id);
 //24
 
+console.log(new Date().getSeconds());
+var id = setInterval(function () {
+  var secs = new Date().getSeconds();
+  console.log(secs);
+  if (secs === 2)
+    clearInterval(id);
+}, 1000);
+//50 51 52...59 0 1 2 then stop
+
 
