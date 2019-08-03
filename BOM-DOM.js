@@ -36,3 +36,18 @@ var id = setInterval(function () {
 //50 51 52...59 0 1 2 then stop
 
 
+//system dialogs: 3 types(alert dialog , confirm dialog, )
+
+alert('hello world');
+// the system will popup 'hello world' on the system dialogs
+
+if (confirm('Delete everything?')) {
+  console.log('You ask for it!');
+}
+else {
+  console.log('Maybe do it next time.')
+}
+// a system ask for "Delete everything?"
+
+
+
