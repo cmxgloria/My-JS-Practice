@@ -52,6 +52,16 @@ var value = isFinite(9 / 0);
 console.log(value);
 //false, 9/0 is infinite
 
+var path = '//start//';
+console.log(encodeURI(path));
+//'%5Cstart%5C'
+
+var path = '\\start\\+';
+console.log(encodeURI(path));
+//'%5Cstart%5C+', have a look at MDN
+
+
+
 
 
 
