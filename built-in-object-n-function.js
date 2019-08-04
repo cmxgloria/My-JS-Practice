@@ -60,6 +60,18 @@ var path = '\\start\\+';
 console.log(encodeURI(path));
 //'%5Cstart%5C+', have a look at MDN
 
+var path = '\\start\\+';
+console.log(encodeURIComponent(path));
+//'%5Cstart%5C%2B'
+
+var path = '%5Cstart%5C+';
+console.log(decodeURI(path));
+//'\start\+'
+
+var path = '%5Cstart%5C%2B';
+console.log(decodeURIComponent(path));
+//'\start\+'
+
 
 
 
