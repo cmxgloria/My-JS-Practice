@@ -24,3 +24,19 @@ var value = parseInt('C000', 16);
 console.log(value);
 //49152, 16 is hex number
 
+var value = parseFloat('123.9');
+console.log(value);
+//123.9
+
+var value = parseFloat('z123.9');
+console.log(value);
+//NaN
+
+var value = parseFloat('1239e-2');
+console.log(value);
+//12.39, e-2 move the decimal place 2 position to the left
+
+
+
+
+
