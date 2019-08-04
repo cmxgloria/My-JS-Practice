@@ -36,6 +36,22 @@ var value = parseFloat('1239e-2');
 console.log(value);
 //12.39, e-2 move the decimal place 2 position to the left
 
+var value = isFinite(Number.POSITION_INFINITY);
+console.log(value);
+//false, we dont have the finite number
+
+var value = isFinite(42);
+console.log(value);
+//true
+
+var value = isNaN(NaN);
+console.log(value);
+//true
+
+var value = isFinite(9 / 0);
+console.log(value);
+//false, 9/0 is infinite
+
 
 
 
