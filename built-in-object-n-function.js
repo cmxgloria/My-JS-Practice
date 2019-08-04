@@ -72,6 +72,10 @@ var path = '%5Cstart%5C%2B';
 console.log(decodeURIComponent(path));
 //'\start\+'
 
+var globalVar = 'foo';
+var code = 'console.log(globalVar)';
+eval(code);
+//foo
 
 
 
