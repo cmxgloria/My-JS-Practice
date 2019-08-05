@@ -10,3 +10,8 @@ var value = 'My String';
 console.log(value.includes(' '));
 //true
 
+
+var value = 'My String';
+console.log(value.endsWith('ing'));
+//true
+
