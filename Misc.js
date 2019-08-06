@@ -38,3 +38,33 @@ catch (e) {
 }
 //RangeError
 
+var actNow = function () {
+  'use strict'
+  newVar = 9;
+};
+actNow();
+//error: Uncaught ReferenceError: newVar is not defined
+
+var actNow = function () {
+  'use strict'
+  newVar = 9;
+  delete newVar;
+};
+actNow();
+//error: unknown: Deleting local variable in strict mode (4:0) 2 | 'use strict' 3 | newVar = 9 ; > 4 | delete newVar; | ^ 5 | }; 6 | actNow();
+
+var actNow = function () {
+  var fn = function (a, a) {
+  };
+};
+actNow();
+//(no error to throw)
+
+var actNow = function () {
+  'use strict'
+  var fn = function (a, a) {
+  };
+};
+actNow();
+        //error: unknown: Argument name clash (3:20) 1 | var actNow = function(){ 2 | // 'use strict' > 3 | var fn = function(a,a){ | ^ 4 | }; 5 | }; 6 | actNow();
+
