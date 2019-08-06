@@ -66,5 +66,18 @@ var actNow = function () {
   };
 };
 actNow();
-        //error: unknown: Argument name clash (3:20) 1 | var actNow = function(){ 2 | // 'use strict' > 3 | var fn = function(a,a){ | ^ 4 | }; 5 | }; 6 | actNow();
+//error: unknown: Argument name clash (3:20) 1 | var actNow = function(){ 2 | // 'use strict' > 3 | var fn = function(a,a){ | ^ 4 | }; 5 | }; 6 | actNow();
+
+
+//JSLint and JSHint
+var MyClass = function () {
+  'use strict';
+  this.id = 9;
+};
+var c = new MyClass();
+console.log(c.id);
+//9 , but if in the JSLint and JSHint, it will output (unexpect this and undclared console)
+
+
+//JS module option(AMD, CommonJS, ES6 and SystemJS)
 
