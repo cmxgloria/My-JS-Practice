@@ -1,5 +1,5 @@
 
-import $ from 'jquery';
+import $ from 'jQuery';
 
 let form = document.getElementById('user-form');
 form.addEventListener('submit', event => {
