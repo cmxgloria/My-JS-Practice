@@ -26,3 +26,9 @@ define(['./player'], function (player) {
   };
 });
 
+//summary
+//role of module bundlers
+//replacement for module loaders
+//browserify
+//webpack
+//related courses  --creating JavaScript Modules with Browserify    --webpack Fundamentals
