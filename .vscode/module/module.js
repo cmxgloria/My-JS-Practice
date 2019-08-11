@@ -7,3 +7,6 @@ var scoreboard = function () {
     showMessage: printMessage
   }
 }();
+
+//module format: Asynchronous Module Defition(AMD), CommonJS, Universal Module Defition(UMD)
+
