@@ -8,3 +8,15 @@ var foo = function bar() {
 };
 foo();
 bar();//error!
+
+
+//scope lexical
+
+function foo() {
+  var bar = 'bar';
+  function baz() {
+    console.log(bar);
+  }
+  baz();
+}
+foo();
