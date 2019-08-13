@@ -45,3 +45,13 @@ with (obj) {
 }
 obj.d;//undefine
 d;//oops
+
+
+//function scope
+var foo = 'foo';
+(function foo() {
+  var foo = 'foo2';
+  console.log(foo);
+})();
+console.log(foo);
+
