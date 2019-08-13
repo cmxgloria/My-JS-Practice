@@ -20,3 +20,11 @@ function foo() {
   baz();
 }
 foo();
+
+//cheating lexical scope
+var bar = 'bar';
+function foo(str) {
+  eval(str); //cheating
+  console.log(bar); //42
+}
+foo("var bar = 42;");
