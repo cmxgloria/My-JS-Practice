@@ -60,6 +60,6 @@ console.log(foo);
 var foo = 'foo2';
 (function (bar) {
   var foo = bar;
-  console.log(foo);
+  console.log(foo);//'foo2'
 })(foo);
-console.log(foo);
+console.log(foo);//'foo2'
