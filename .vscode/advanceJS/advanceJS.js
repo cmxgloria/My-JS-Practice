@@ -28,3 +28,20 @@ function foo(str) {
   console.log(bar); //42
 }
 foo("var bar = 42;");
+
+//another sample
+
+var obj = {
+  a: 2,
+  b: 3,
+  c: 4
+};
+obj.a = obj.b + obj.c;
+obj.c = obj.b - obj.a;
+with (obj) {
+  a = b + c;
+  d = b - a;
+  d = 3;//?
+}
+obj.d;//undefine
+d;//oops
