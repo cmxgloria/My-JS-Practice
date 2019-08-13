@@ -55,3 +55,11 @@ var foo = 'foo';
 })();
 console.log(foo);
 
+
+//IIFE pattern
+var foo = 'foo2';
+(function (bar) {
+  var foo = bar;
+  console.log(foo);
+})(foo);
+console.log(foo);
