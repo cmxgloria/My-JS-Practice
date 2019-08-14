@@ -63,3 +63,15 @@ var foo = 'foo2';
   console.log(foo);//'foo2'
 })(foo);
 console.log(foo);//'foo2'
+
+//dynamic scope
+function foo() {
+  console.log(bar);
+}
+function baz() {
+  var bar = 'bar';
+  foo();
+}
+baz();
+//error: Uncaught ReferenceError: bar is not defined
+
