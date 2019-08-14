@@ -75,3 +75,9 @@ function baz() {
 baz();
 //error: Uncaught ReferenceError: bar is not defined
 
+//quiz
+//What type of scoping rules does JavaScript have?--lexical scoping
+//Exception?--Eval and the with keyword to cheat the exception is lexical
+
+//What are the different ways you can creat a new scope?--Function,Try catch(Catch blocks) and Curly Braces with let keyword
+//What is the different between undefine and undeclared?--Undefined is declare variable, currently have a value, but it's an empty placeholders
