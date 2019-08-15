@@ -81,3 +81,18 @@ baz();
 
 //What are the different ways you can creat a new scope?--Function,Try catch(Catch blocks) and Curly Braces with let keyword
 //What is the different between undefine and undeclared?--Undefined is declare variable, currently have a value, but it's an empty placeholders
+
+
+//hoisting
+var a = b();
+var c = d();
+a;
+c;
+function b() {
+  return c;
+}
+var d = function () {
+  return b();
+};
+//error: Uncaught TypeError: d is not a function
+
