@@ -96,3 +96,18 @@ var d = function () {
 };
 //error: Uncaught TypeError: d is not a function
 
+function b() {
+  return c;
+}
+var a;
+var c;
+var d;
+a = b();
+c = d();
+a;
+c;
+d = function () {
+  return b();
+};
+//error: Uncaught TypeError: d is not a function
+
