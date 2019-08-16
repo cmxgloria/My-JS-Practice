@@ -123,7 +123,7 @@ function foo() {
 
 
 //hoisting recursion
-a(1);  //??
+a(1);  //39
 function a(foo) {
   if (a > 20) return foo;
   return b(foo + 2);
