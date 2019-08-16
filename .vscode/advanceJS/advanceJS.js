@@ -194,5 +194,14 @@ function baz() {
 }
 var bar = 'bar2';
 foo();
-//'bar2
+//'bar2'
 
+function foo() {
+  console.log(this.bar);
+}
+var bar = 'bar1';
+var obj = { bar: 'bar2' };
+foo();
+foo.call(obj);
+//'bar1'
+//'bar2'
