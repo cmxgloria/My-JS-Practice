@@ -205,3 +205,17 @@ foo();
 foo.call(obj);
 //'bar1'
 //'bar2'
+
+
+//hard binding
+function foo() {
+  console.log(this.bar);
+}
+var obj = { bar: 'bar1' };
+var obj2 = { bar: 'bar2' };
+var orig = foo;
+foo = function () { orig.call(obj) };//override foo in whole function, force this referrence to the obj the original function
+foo();
+foo.call(obj2);
+//'bar1'
+//'bar1'
