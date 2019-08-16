@@ -111,3 +111,13 @@ d = function () {
 };
 //error: Uncaught TypeError: d is not a function
 
+foo();
+var foo = 2;
+function foo() {
+  console.log('bar');
+}
+function foo() {
+  console.log('foo');
+}
+//error: unknown: Identifier 'foo' has already been declared (3:9) 1 | foo(); 2 | var foo = 2; > 3 | function foo(){ | ^ 4 | console.log('bar'); 5 | } 6 | function foo()
+
