@@ -121,3 +121,16 @@ function foo() {
 }
 //error: unknown: Identifier 'foo' has already been declared (3:9) 1 | foo(); 2 | var foo = 2; > 3 | function foo(){ | ^ 4 | console.log('bar'); 5 | } 6 | function foo()
 
+
+//hoisting recursion
+a(1);  //??
+function a(foo) {
+  if (a > 20) return foo;
+  return b(foo + 2);
+}
+function b(foo) {
+  return c(foo) + 1;
+}
+function c(foo) {
+  return a(foo * 2);
+}
