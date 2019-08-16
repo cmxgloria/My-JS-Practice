@@ -134,3 +134,5 @@ function b(foo) {
 function c(foo) {
   return a(foo * 2);
 }
+//1+2=3*2=6<20. the second function skip <20; 6+2=8*2=16<20,the second function skip <20;16+2=18*2=36>20, 36+2=38 then run the second function plus 1=39
+
