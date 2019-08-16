@@ -151,3 +151,18 @@ for (var i = 0; i < rest.length; i++) {
 
   })(i);
 }
+// or use the object= {} , changed to var rest = 'KLMNOPQRSTUVWXYZ'.split(""), obj = {} ;, also the window need to change obj
+
+
+function foo() {
+  console.log(this.bar)
+}
+var bar = 'bar==1';
+var o2 = { bar: 'bar---2', fo: foo };
+var o3 = { bar: 'bar--3', fo: foo };
+foo();  //'bar1'
+o2.fo(); //'bar2'
+o3.fo(); //'bar3'
+//'bar==1'
+//'bar---2'
+//'bar--3'
