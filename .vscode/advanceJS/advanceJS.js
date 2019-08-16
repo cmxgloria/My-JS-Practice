@@ -136,3 +136,18 @@ function c(foo) {
 }
 //1+2=3*2=6<20. the second function skip <20; 6+2=8*2=16<20,the second function skip <20;16+2=18*2=36>20, 36+2=38 then run the second function plus 1=39
 
+//solution to print A-Z
+//another part of sample
+var rest = 'KLMNOPQRSTUVWXYZ'.split("");
+for (var i = 0; i < rest.length; i++) {
+  (function (i) {
+    //define the current function
+    window[rest[i]] = function () {
+      console.log(rest[i]);
+      if (i < (rest.length - 1)) {
+        window[rest[i + 1]]();
+      }
+    };
+
+  })(i);
+}
