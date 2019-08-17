@@ -238,3 +238,13 @@ foo.call(obj2);
 //'bar1'
 //'bar1'
 
+
+//new keyword
+function foo() {
+  this.baz = "baz";
+  console.log(this.bar + " " + baz);
+}
+var bar = 'bar';
+var baz = new foo();
+//'undefined undefined'
+
