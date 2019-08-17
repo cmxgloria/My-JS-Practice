@@ -255,4 +255,16 @@ function foo() {
 }
 var bar = 'bar99';
 var baz = new foo();
-//
+//'baz... bar99'
+
+
+//summary/ 
+//1. what determine which object a function this point to? What is the default?
+//new,explicit binding with a call or apply or the bind, Imlipcit with binding with an owning and containing object , default 
+
+//2. how do you borrow a function by implicit assignment of this?
+//we mutate an object to put the reference to that function on the object ,we could say the object.methodname
+
+//3.how do you explicitbind this?
+//apply.bind
+
