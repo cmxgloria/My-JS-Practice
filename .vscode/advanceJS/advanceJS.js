@@ -248,3 +248,11 @@ var bar = 'bar';
 var baz = new foo();
 //'undefined undefined'
 
+//change some details
+function foo() {
+  this.baz = "baz...";
+  console.log(this.baz + " " + bar);
+}
+var bar = 'bar99';
+var baz = new foo();
+//
