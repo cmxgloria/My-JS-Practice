@@ -268,3 +268,19 @@ var baz = new foo();
 //3.how do you explicitbind this?
 //apply.bind
 
+
+
+//closure: it is when a function "remember" its lexical scope even when the function is executed outside that lexical scope
+
+function foo() {
+  var bar = "bar";
+  function baz() {
+    console.log(bar);
+  };
+  bam(baz);
+}
+function bam(baz) {
+  baz();
+}
+foo();
+//bar
