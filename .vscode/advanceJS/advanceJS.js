@@ -330,4 +330,41 @@ foo();
 //0
 //1
 
+//nested scope
+function foo() {
+  var bar = 0;
+  setTimeout(function () {
+    var baz = 5;
+    console.log(bar++);
+    setTimeout(function () {
+      console.log(bar + baz);
+    }, 3000);
+  }, 2000);
+}
+foo();
+//0
+//6
+
+//loop
+for (var i = 1; i < 5; i++) {
+  setTimeout(function () {
+    console.log('i: ' + i);
+  },
+    i * 3000)
+}
+//'i: 5'
+//'i: 5'
+//'i: 5'
+//'i: 5'
+
+//if without i*, the output will print at the same time after 3 seconds as below
+for (var i = 1; i < 5; i++) {
+  setTimeout(function () {
+    console.log('i: ' + i);
+  }, 3000)
+}
+//'i: 5'
+//'i: 5'
+//'i: 5'
+//'i: 5'
 
