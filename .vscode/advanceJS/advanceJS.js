@@ -402,4 +402,11 @@ for (let i = 1; i < 5; i++) {
 //'i: 3'
 //'i: 4'  ( output print at the same time after 1 second)
 
+var foo = (function () {
+  var o = { bar: 'bar1' };
+  return { obj: o };
+})();
+console.log(foo.obj.bar);
+//bar1
+
 
