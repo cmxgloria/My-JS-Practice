@@ -284,3 +284,17 @@ function bam(baz) {
 }
 foo();
 //bar
+
+//another closure sample
+function foo() {
+  var bar = 'bar';
+  return function () {
+    console.log(bar);
+  }
+}
+function bam() {
+  foo()();
+}
+bam();
+//'bar'
+
