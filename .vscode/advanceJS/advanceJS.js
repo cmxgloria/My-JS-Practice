@@ -318,7 +318,7 @@ foo();
 
 //closure: share scope
 function foo() {
-  var bar = 3;
+  var bar = 0;
   setTimeout(function () {
     console.log(bar++);
   }, 2000);
@@ -327,5 +327,7 @@ function foo() {
   }, 4000);
 }
 foo();
-//3
-//4
+//0
+//1
+
+
