@@ -314,3 +314,18 @@ function foo() {
   });
 }
 foo();
+
+
+//closure: share scope
+function foo() {
+  var bar = 3;
+  setTimeout(function () {
+    console.log(bar++);
+  }, 2000);
+  setTimeout(function () {
+    console.log(bar++);
+  }, 4000);
+}
+foo();
+//3
+//4
