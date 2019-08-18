@@ -368,3 +368,16 @@ for (var i = 1; i < 5; i++) {
 //'i: 5'
 //'i: 5'
 
+//how to get scope different for each iteration, put IIFE inside the loop ,each loop can it own i, whole different scope creat for each iterator
+
+for (var i = 1; i < 5; i++) {
+  (function (i) {
+    setTimeout(function () {
+      console.log('i: ' + i);
+    }, i * 3000);
+  })(i);
+}
+ //'i: 1'
+//'i: 2'
+//'i: 3'
+//'i: 4'
