@@ -296,5 +296,14 @@ function bam() {
   foo()();
 }
 bam();
-//'bar'
+//bar
+
+function foo() {
+  var bar = 'bar';
+  setTimeout(function () {
+    console.log(bar);
+  }, 2000);
+}
+foo();
+//bar
 
