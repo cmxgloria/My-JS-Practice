@@ -377,7 +377,29 @@ for (var i = 1; i < 5; i++) {
     }, i * 3000);
   })(i);
 }
- //'i: 1'
+//'i: 1'
 //'i: 2'
 //'i: 3'
 //'i: 4'
+
+for (let i = 1; i < 5; i++) {
+  setTimeout(function () {
+    console.log('i: ' + i);
+  }, i * 1000)
+}
+//'i: 1'
+//'i: 2'
+//'i: 3'
+//'i: 4'  ( output print one by one )
+
+for (let i = 1; i < 5; i++) {
+  setTimeout(function () {
+    console.log('i: ' + i);
+  }, 1000)
+}
+//'i: 1'
+//'i: 2'
+//'i: 3'
+//'i: 4'  ( output print at the same time after 1 second)
+
+
