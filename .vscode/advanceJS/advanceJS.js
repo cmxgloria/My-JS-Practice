@@ -410,3 +410,14 @@ console.log(foo.obj.bar);
 //bar1
 
 
+// module pattern
+var foo = (function () {
+  var o = { bar: 'bar2' };
+  return {
+    bar: function () {
+      console.log(o.bar);
+    }
+  };
+})();
+foo.bar();
+
