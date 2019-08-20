@@ -436,3 +436,14 @@ var foo = (function () {
 })();
 foo.bar();
 
+//closure: modern pattern
+define("foo", function () {
+  var o = { bar: 'bar8' };
+  return {
+    bar: function () {
+      console.log(o.bar);
+    }
+  };
+});
+//error: Uncaught ReferenceError: define is not defined
+
