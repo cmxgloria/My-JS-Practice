@@ -421,3 +421,18 @@ var foo = (function () {
 })();
 foo.bar();
 
+
+//another sample like API
+var foo = (function () {
+  var publicAPI = {
+    bar: function () {
+      publicAPI.baz();
+    },
+    baz: function () {
+      console.log('baz8');
+    }
+  };
+  return publicAPI;
+})();
+foo.bar();
+
