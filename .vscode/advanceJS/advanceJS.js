@@ -459,4 +459,4 @@ define("foo", function () {
 //Put the IIFE inside the iteration and let keyword 
 
 //4.how do you use a closure to create an encapsulated module? what is the benefits of that approach?
-//two ways, it has to be wrapped by a function, second is to return one or more inner function that have a 
+//two ways, it has to be wrapped by a function, second is to return one or more inner function that have a closure over the scope
