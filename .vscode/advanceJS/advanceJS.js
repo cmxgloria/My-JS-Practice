@@ -447,3 +447,10 @@ define("foo", function () {
 });
 //error: Uncaught ReferenceError: define is not defined
 
+//Closure summary
+//1.What is closure and how is it created?--it is when a function "remember" its lexical scope even when the function is executed outside that lexical scope
+// it is created when an inner function is transported outside of the outer function.
+
+//2.how long deoes it scope stay around?
+//scope like a reference to hidden scope object,as long as the function still has a closure over the scope, the scope is going to stya around
+// closure goes away, scope will be collected by garbagy
