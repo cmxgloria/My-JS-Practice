@@ -453,4 +453,4 @@ define("foo", function () {
 
 //2.how long deoes it scope stay around?
 //scope like a reference to hidden scope object,as long as the function still has a closure over the scope, the scope is going to stya around
-// closure goes away, scope will be collected by garbagy
+// closure goes away, scope will be garbage collected.
