@@ -454,3 +454,9 @@ define("foo", function () {
 //2.how long deoes it scope stay around?
 //scope like a reference to hidden scope object,as long as the function still has a closure over the scope, the scope is going to stya around
 // closure goes away, scope will be garbage collected.
+
+//3.why doesnt a function callback inside a loop behave as expected? How do we fix it?
+//Put the IIFE inside the iteration and let keyword 
+
+//4.how do you use a closure to create an encapsulated module? what is the benefits of that approach?
+//two ways, it has to be wrapped by a function, second is to return one or more inner function that have a 
