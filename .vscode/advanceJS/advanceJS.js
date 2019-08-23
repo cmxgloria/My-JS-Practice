@@ -460,3 +460,22 @@ define("foo", function () {
 
 //4.how do you use a closure to create an encapsulated module? what is the benefits of that approach?
 //two ways, it has to be wrapped by a function, second is to return one or more inner function that have a closure over the scope
+
+
+//Object Orienting
+//Prototypes explained
+function Foo(who) {
+  this.me = who;
+}
+Foo.prototype.identify = function () {
+  return "I am " + this.me;
+};
+var a1 = new Foo('a1');
+var a2 = new Foo('a2');
+a2.speak = function () {
+  alert("Hello, " + this.identify() + ".");
+};
+a1.constructor === Foo;
+a1.constructor === a2.constructor;
+a1.__proto__ === Foo.prototype;
+a1.__proto__ === a2.__proto__;
