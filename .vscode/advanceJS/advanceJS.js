@@ -507,3 +507,25 @@ Foo.prototype.speak = function () {
 };
 var a1 = new Foo("a1");
 a1.speak();
+
+//prototype: object linkded
+function Foo(who) {
+  this.me = who;
+}
+Foo.prototype.identify = function () {
+  return "I am " + this.me;
+};
+function Bar(who) {
+  Foo.call(this, who);
+}
+//Bar.prototype = new Foo(); //or
+Bar.prototype = Object.create(Foo.prototype);
+//Note:construstor is borked here, need to fix
+Bar.prototype.speak = function () {
+  alert("Hello, " + this.identify() + ".");
+};
+var b1 = new Bar("b1");
+var b2 = new Bar("b2");
+b1.speak();// alert: "Hello, I am b1";
+b2.speak();
+//output 2 dialogs window
