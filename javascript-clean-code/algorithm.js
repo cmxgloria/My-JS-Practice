@@ -36,3 +36,4 @@ const findVowels = str => {
   }
   return count;
 }
+
