@@ -534,4 +534,14 @@ b2.speak();
 //constructor is a function that is called with the new key in front of it.
 //prototype is a linkage from one object to antoher object . it comes from two ways: it comes from the object create or we can get it indirectly as step two of four steps of the new keyword
 //how to prototype affect an object? if they cant handle object or property, that the property or method reference, it delegate up to prototype chain.
-//how to find out the object prototype points to? --Dunder proto, object, getprototypeof
+//how to find out the object prototype points to? --Dunder proto, object, getprototypeOf,
+
+
+function Foo(who) {
+  this.me = who;
+}
+Foo.prototype.speak = function () {
+  alert("Hello, I am " + this.me + ".");
+};
+var a1 = new Foo("a1");
+$("#speak").click(a1.speak);
