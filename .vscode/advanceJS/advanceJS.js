@@ -529,3 +529,7 @@ var b2 = new Bar("b2");
 b1.speak();// alert: "Hello, I am b1";
 b2.speak();
 //output 2 dialogs window
+
+//summary
+//constructor is a function that is called with the new key in front of it.
+//prototype is a linkage from one object to antoher object . it comes from two ways: it comes from the object create or we can get it indirectly as step two of four step.
