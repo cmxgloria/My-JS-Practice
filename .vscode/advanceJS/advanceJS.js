@@ -545,3 +545,15 @@ Foo.prototype.speak = function () {
 };
 var a1 = new Foo("a1");
 $("#speak").click(a1.speak);
+
+//OO inheritance delegation
+function Foo(who) {
+  this.me = who;
+}
+Foo.prototype.speak = function () {
+  alert("Hello, I am " + this.me + ".");
+};
+var a1 = new Foo("a1");
+a1.speak();
+//alert: Hello, I am a1.
+
