@@ -546,7 +546,7 @@ Foo.prototype.speak = function () {
 var a1 = new Foo("a1");
 $("#speak").click(a1.speak);
 
-//OO inheritance delegation
+//OO: inheritance delegation
 function Foo(who) {
   this.me = who;
 }
