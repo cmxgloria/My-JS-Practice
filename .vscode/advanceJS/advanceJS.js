@@ -636,3 +636,9 @@ if (!Object.create) {
     return new F();
   };
 }
+
+//2 good websites to recommend
+// https://gist.github.com/getify/5572383
+// https://gist.github.com/getify/5226305
+
+
