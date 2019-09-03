@@ -641,4 +641,11 @@ if (!Object.create) {
 // https://gist.github.com/getify/5572383
 // https://gist.github.com/getify/5226305
 
-
+//summary
+//1. How is JavaScript's [[prototype]] chain not like traditional/classical inheritance?
+// It doesnt copy it links. The error goes in the opposite direction. What does the delegate up the chain. So anytime you call.
+//2.What does "behavior delegation" mean and how does it describe object linking in JS?
+//a property or method on one object and you cant handle that property or method it delegate up this prototype chain to 
+//3. Why is "behavior delegation" as a design pattern a helpful thing and what are the tradeoffs?
+//embracing the fact that all objects continue to exist and they are dynamically and changing. And the linkage that occurs is a dynamic linkage at runtime.With classes, they are sort of a snapshot copy that occurs. So once I hace made this copy, the if I change the parent class in some way it is not affecting the child. But with JavaScript and really with embracing the idea that foo can change during the runtime and bar automatically now gets to delegate to a  changed foo because it is a live link. so it actually is a much more
+//powerful mechanism. In fact, more powerful that class because ou can implement classes in delegation but you . can not do the reverse. You cant implement delefate in a class mechanism.what are adding it. It is called proxy, you cant shadow- That is one of the downsides to the way the mechanism works in awkward. There is osme debatably, dependingon your perspective, ES6 actually adds a shadowing is still kind of an awkward
