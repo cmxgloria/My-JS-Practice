@@ -626,3 +626,13 @@ Bar.speak = function () {
 var b1 = Object.create(Bar);
 b1.init("b1");
 b1.speak();
+
+
+//OLOO Object.create()
+if (!Object.create) {
+  Object.create = function (o) {
+    function F() { }
+    F.prototype = o;
+    return new F();
+  };
+}
