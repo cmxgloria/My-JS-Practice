@@ -652,4 +652,5 @@ if (!Object.create) {
 // what is tradeoff?--It is called proxy, you cant shadow- That is one of the downsides to the way the mechanism works in awkward. There is some debatably, dependingon your perspective, ES6 actually adds a class key word and super key word, so they can go down to find the bad syntax and solve out the problem, but not all of them.. shadowing is still kind of an awkward.
 
 
-//New chater async pattern: callback, generator/coroutine
+//New chater async pattern: callback, generator/coroutines, promise
+
