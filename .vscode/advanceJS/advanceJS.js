@@ -673,5 +673,22 @@ setTimeout(function () {
 //'callback3'
 
 
-
+//same function
+function one(cd) {
+  console.log('one');
+  setTimeout(cd, 1000);
+}
+function two(cd) {
+  console.log('two');
+  setTimeout(cd, 1000);
+}
+function three(cd) {
+  console.log('three');
+}
+one(function () {
+  two(three);
+})
+//'one'
+//'two'
+//'three'
 
