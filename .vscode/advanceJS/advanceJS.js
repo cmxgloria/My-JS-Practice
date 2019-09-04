@@ -657,3 +657,21 @@ setTimeout(function () {
   console.log('Callback');
 }, 1000);
 
+
+//callback hell sample
+setTimeout(function () {
+  console.log('callback1');
+  setTimeout(function () {
+    console.log('callback2');
+    setTimeout(function () {
+      console.log('callback3')
+    }, 1000);
+  }, 1000);
+}, 1000);
+//'callback1'
+//'callback2'
+//'callback3'
+
+
+
+
