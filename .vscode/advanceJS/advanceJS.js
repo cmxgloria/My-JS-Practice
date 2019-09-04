@@ -650,3 +650,6 @@ if (!Object.create) {
 //embracing the fact that all objects continue to exist and they are dynamically and changing. And the linkage that occurs is a dynamic linkage at runtime.With classes, they are sort of a snapshot copy that occurs. So once I hace made this copy, the if I change the parent class in some way it is not affecting the child. But with JavaScript and really with embracing the idea that foo can change during the runtime and bar automatically now gets to delegate to a  changed foo because it is a live link. so it actually is a much more
 //powerful mechanism. In fact, delegation is more powerful that becaus it can implement classes in delegation but you can not do the reverse for the normal class. You cant implement delegate in a class mechanism.what are adding it. 
 // what is tradeoff?--It is called proxy, you cant shadow- That is one of the downsides to the way the mechanism works in awkward. There is some debatably, dependingon your perspective, ES6 actually adds a class key word and super key word, so they can go down to find the bad syntax and solve out the problem, but not all of them.. shadowing is still kind of an awkward.
+
+
+//New chater async pattern: callback, generator/coroutine
