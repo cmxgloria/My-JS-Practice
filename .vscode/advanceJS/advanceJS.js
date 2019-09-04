@@ -653,4 +653,7 @@ if (!Object.create) {
 
 
 //New chater async pattern: callback, generator/coroutines, promise
+setTimeout(function () {
+  console.log('Callback');
+}, 1000);
 
