@@ -730,3 +730,25 @@ DogA.speak();
 DogA.eat();
 //'lulu make a noise.'
 //'yummy yummy'
+
+// Use Object.setPrototypeOf() in the case of extending regular objects
+const Animal = {
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  }
+};
+
+class Dog {
+  constructor(name) {
+    this.name = name;
+  }
+  eat() {
+    console.log('Yummy Yummy!');
+  }
+}
+
+Object.setPrototypeOf(Dog.prototype, Animal);
+
+const dogA = new Dog('Milu');
+dogA.speak(); // Milu makes a noise.
+dogA.eat(); // Yummy Yummy!
