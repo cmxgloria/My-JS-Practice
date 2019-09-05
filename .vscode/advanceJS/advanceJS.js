@@ -783,7 +783,7 @@ class Animal {
     this.name = name;
   }
   speak() {
-    console.log(`${this.name} maeka . noise`);
+    console.log(`${this.name} make noise.`);
   }
 }
 class Dog extends Animal {
@@ -802,7 +802,7 @@ class Dog extends Animal {
   }
 }
 const dogA = new Dog('david');
-dogA.dogName();
+dogA.dogName;
 dogA.dogName = "mandia";
-dogA.dogName();
+dogA.dogName;
 
