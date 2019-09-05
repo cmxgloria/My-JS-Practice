@@ -711,3 +711,22 @@ DogA.speak();
 DogA.eat();
 //'lulu make a noise.'
 //'yummy yummy'
+
+//also can extend from a function:
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.speak = function () {
+  console.log(`${this.name} make a noise.`)
+}
+class Dog extends Animal {
+  eat() {
+    console.log("yummy yummy");
+  }
+}
+const DogA = new Dog("lulu");
+DogA.speak();
+DogA.eat();
+//'lulu make a noise.'
+//'yummy yummy'
