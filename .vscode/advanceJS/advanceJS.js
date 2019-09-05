@@ -774,3 +774,35 @@ Object.assign(Dog.prototype, animalBehavior);
 const dogA = new Dog('Milu');
 dogA.speak(); // Milu makes a noise.
 dogA.eat(); // Yummy Yummy!
+
+
+
+//Classes also allow you to use getters and setters
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(`${this.name} maeka . noise`);
+  }
+}
+class Dog extends Animal {
+  get dogName() {
+    return `Mr ${this.name}`;
+  }
+  set dogName(name) {
+    this.name = name;
+  }
+  speak() {
+    super.speak();
+    console.log(`${this.name} bark`);
+  }
+  eat() {
+    console.log("yummy yummy");
+  }
+}
+const dogA = new Dog('david');
+dogA.dogName();
+dogA.dogName = "mandia";
+dogA.dogName();
+
