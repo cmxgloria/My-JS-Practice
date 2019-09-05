@@ -752,3 +752,25 @@ Object.setPrototypeOf(Dog.prototype, Animal);
 const dogA = new Dog('Milu');
 dogA.speak(); // Milu makes a noise.
 dogA.eat(); // Yummy Yummy!
+
+//mixins template
+const animalBehavior = {
+  speak() {
+    console.log(`${this.name} makes a noise.`);
+  },
+  eat() {
+    console.log('Yummy Yummy!');
+  }
+}
+
+class Dog {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+Object.assign(Dog.prototype, animalBehavior);
+
+const dogA = new Dog('Milu');
+dogA.speak(); // Milu makes a noise.
+dogA.eat(); // Yummy Yummy!
