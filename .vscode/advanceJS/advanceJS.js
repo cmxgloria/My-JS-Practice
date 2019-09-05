@@ -692,3 +692,22 @@ one(function () {
 //'two'
 //'three'
 
+//subclass function
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(`${this.name} make a noise.`)
+  }
+}
+class Dog extends Animal {
+  eat() {
+    console.log("yummy yummy");
+  }
+}
+const DogA = new Dog("lulu");
+DogA.speak();
+DogA.eat();
+//'lulu make a noise.'
+//'yummy yummy'
