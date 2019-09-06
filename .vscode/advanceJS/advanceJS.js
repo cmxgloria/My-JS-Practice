@@ -896,3 +896,21 @@ getData(10)
     console.log(answer);
     //meaning of life: 42
   });
+
+
+//Async Pattern: sequences and gates
+ASQ()
+  .then(function (done) {
+    setTimeout(done, 1000);
+  })
+  .gate(
+    function (done) {
+      setTimeout(done, 2000);
+    },
+    function () {
+      setTimeout(done, 3000);
+    }
+  )
+  .then(function () {
+    console.log("5 seconds passed!");
+  });
