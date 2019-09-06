@@ -854,3 +854,22 @@ p.done(function (value) {
 setTimeout(function () {
   wait.resolve(Math.random())
 }, 1000);
+//0.7050410594149801
+
+
+//another sample as above
+function waitForN(n) {
+  var d = $.Deferred();
+  setTimeout(d.resolve, n);
+  return d.promise();
+}
+waitForN(3000)
+  .then(function () {
+    console.log("Hello World");
+    return waitForN(2000);
+  })
+  .then(function () {
+    console.log("finally");
+  });
+//'Hello World'
+//'finally'
