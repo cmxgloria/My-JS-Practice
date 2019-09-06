@@ -937,3 +937,28 @@ ASQ()
     console.log(answer);
   });
 
+
+//Async Pattern: CSP-style generators
+ASQ(2)
+  .runner(
+    //v1 will set as '2' here)
+    function* (v1) {
+      console.log("initial v1: " + v1); //initial v1: 2
+      v1 += yield null;
+      console.log("now v1: " + v1); //now v1: 12
+      v1 += yield getData(v1 * 2);
+      console.log("finally v1: " + v1); //finally v1: 84
+      yield getData(v1 + 1);
+    },
+    function* () {
+      var v2 = yield getData(10);
+      console.log("initial v2: " + v2); //initial v2: 24
+      v2 += yield getData(v2 * 3);
+      console.log("finally v2: " + v2); //finally v2: 109
+      yield getData(v2 + 6);
+    }
+  )
+  .val(function (msg) {
+    console.log("Result: " + msg); //Result: 115
+  });
+
