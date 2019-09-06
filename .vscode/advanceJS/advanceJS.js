@@ -823,3 +823,25 @@ trySomething(
     console.log("sorry: " + num);
   }
 );
+//'Success: 0.6749277400500768'
+
+//Async Pattern: nested-callback tasks
+function get(d, cb) {
+  setTimeout(function () {
+    cb(d);
+  }, 1000);
+}
+getData(10, function (num1) {
+  var x = 1 + num1;
+  getData(30, function (num2) {
+    var y = 1 + num2;
+    getData(
+      "meaning of life: " + (x + y), //meaning of life: 42
+      function (answer) {
+        console.log(answer);
+      }
+    );
+  });
+});
+
+
