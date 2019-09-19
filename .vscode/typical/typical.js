@@ -25,3 +25,13 @@ let mat = setTimeout(function () {
 console.log('e');
 
 //async function
+let num = 1;
+async function increment() {
+  num += await 2;
+  console.log(num);
+}
+increment();
+num += 4;
+console.log(num);
+//5
+//3
