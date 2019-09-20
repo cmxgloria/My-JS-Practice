@@ -35,3 +35,36 @@ num += 4;
 console.log(num);
 //5
 //3
+
+//scope
+var variableInGlobalScope = 'I am global';
+function functionWithLocalScope() {
+  var variableInLocalScope = 'I am local';
+  console.log(variableInGlobalScope);
+  console.log(variableInLocalScope);
+}
+console.log(variableInGlobalScope);
+console.log(variableInLocalScope);
+//'I am global'
+//error: Uncaught ReferenceError: variableInLocalScope is not defined
+
+
+//hositing
+console.log(x);
+var x;
+//undefined
+function sayHelloCreator(name) {
+  var greeting = 'Hello';
+  function sayHelloFunction() {
+    console.log(greeting + ' ' + name);
+  }
+  return sayHelloFunction;
+}
+var sayHelloToJohn = sayHelloCreator('John');
+var sayHelloToSarah = sayHelloCreator('Sarah');
+sayHelloToJohn();
+sayHelloToSarah();
+//'Hello John'
+//'Hello Sarah'
+
+//closure
