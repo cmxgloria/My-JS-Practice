@@ -53,6 +53,18 @@ console.log(variableInLocalScope);
 console.log(x);
 var x;
 //undefined
+hoistingFunctionDelcaration(); // true
+function hoistingFunctionDelcaration() {
+  return true;
+}
+
+unhoistingFunctionExpression(); //Error
+var unhoistingFunctionExpression = function () {
+  return true;
+}
+
+
+//closure
 function sayHelloCreator(name) {
   var greeting = 'Hello';
   function sayHelloFunction() {
@@ -67,7 +79,7 @@ sayHelloToSarah();
 //'Hello John'
 //'Hello Sarah'
 
-//closure
+
 
 
 //JS questions
