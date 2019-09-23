@@ -106,6 +106,16 @@ name.unshift("joseph", "Jane");
 console.log(name);
 //[" joseph "," Jane ", " charlie ", " john "]
 
+//unescape and escape
+<script>
+  document.write(escape("Hello? How are you!"));
+</script>
+  //Hello%3F%20How%20are%20you%21
+
+  <script>
+    document.write(unescape("Hello%3F%20How%20are%20you%21"));
+</script>
+//
 //JS questions
 //what is your most important tools for you and why?-It depends on the application(give examples of different too suit the application)
 //what is your favourite feature in Node and why?--LTS support(async await, generators ES 6 support)
