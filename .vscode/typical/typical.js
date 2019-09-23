@@ -117,6 +117,14 @@ console.log(name);
 </script>
 //Hello? How are you!
 
+//typeof
+function func(x) {
+  console.log(typeof x, arguments.length);
+}
+func(); //==> "undefined", 0
+func(7); //==> "number", 7
+func("1", "2", "3"); //==> "string", 3
+
 
 //JS questions
 //what is your most important tools for you and why?-It depends on the application(give examples of different too suit the application)
