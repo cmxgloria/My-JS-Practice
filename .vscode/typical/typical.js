@@ -98,6 +98,14 @@ someObject.myMethod.call(someOtherObject, '<', '>'); // alerts '<Bar>'
 
 someObject.myMethod.apply(someOtherObject, ['<', '>']); // alerts '<Bar>'
 
+
+//unshift
+var name = ["john"];
+name.unshift("charlie");
+name.unshift("joseph", "Jane");
+console.log(name);
+//[" joseph "," Jane ", " charlie ", " john "]
+
 //JS questions
 //what is your most important tools for you and why?-It depends on the application(give examples of different too suit the application)
 //what is your favourite feature in Node and why?--LTS support(async await, generators ES 6 support)
