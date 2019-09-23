@@ -80,7 +80,23 @@ sayHelloToSarah();
 //'Hello Sarah'
 
 
+var someObject = {
+  myProperty: 'Foo',
 
+  myMethod: function (prefix, postfix) {
+
+    alert(prefix + this.myProperty + postfix);
+  }
+};
+someObject.myMethod('<', '>'); // alerts '<Foo>'
+var someOtherObject = {
+
+  myProperty: 'Bar'
+
+};
+someObject.myMethod.call(someOtherObject, '<', '>'); // alerts '<Bar>'
+
+someObject.myMethod.apply(someOtherObject, ['<', '>']); // alerts '<Bar>'
 
 //JS questions
 //what is your most important tools for you and why?-It depends on the application(give examples of different too suit the application)
