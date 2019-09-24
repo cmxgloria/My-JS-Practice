@@ -178,3 +178,22 @@ myObject.func();
 //outer func:  self.foo = bar
 //inner func:  this.foo = undefined
 //inner func:  self.foo = bar
+
+function foo1() {
+  return {
+    bar: "hello"
+  };
+}
+
+function foo2() {
+  return
+  {
+    bar: "hello"
+  };
+}
+//foo1 returns:
+//Object { bar: "hello" }
+//foo2 returns:
+//undefined 
+
+m
