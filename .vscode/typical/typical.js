@@ -174,4 +174,7 @@ var myObject = {
   }
 };
 myObject.func();
-//
+//outer func:  this.foo = bar
+//outer func:  self.foo = bar
+//inner func:  this.foo = undefined
+//inner func:  self.foo = bar
