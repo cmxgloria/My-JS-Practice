@@ -126,7 +126,7 @@ func(7); //==> "number", 7
 func("1", "2", "3"); //==> "string", 3
 
 
-//How would you empty the array below?
+//How would you empty the array below? (have 4 methods to deal with)
 Var emptyArray = ['array’, ‘is’, ‘full’];
 emptyArray.length = 0;
 
@@ -141,10 +141,22 @@ while (emptyArray.length) {
 
 emptyArray = []
 
-//JS questions
-//what is your most important tools for you and why?-It depends on the application(give examples of different too suit the application)
-//what is your favourite feature in Node and why?--LTS support(async await, generators ES 6 support)
-//what is your favourite feature in css and why?--CSS grid and flexbox
-//what is your favourite feature in Javascript and why?--Object.freeze,fetch,guading(async/await,generator,ES6 support,map/filter/reduce)
-//what is the most difficult part of a frontend project and why?--To keep up the test coverage, but on the right tools, keep animation at 60 fps, avoid tech debt(make everything consistent in every browser)
-//how would you fix a slow browser?--use the browser profiler to investigate, reduce the number of http call,use vanilla javascript(ship less code and improve the load time,reduce asset weight)
+  //JS questions
+  //what is your most important tools for you and why?-It depends on the application(give examples of different too suit the application)
+  //what is your favourite feature in Node and why?--LTS support(async await, generators ES 6 support)
+  //what is your favourite feature in css and why?--CSS grid and flexbox
+  //what is your favourite feature in Javascript and why?--Object.freeze,fetch,guading(async/await,generator,ES6 support,map/filter/reduce)
+  //what is the most difficult part of a frontend project and why?--To keep up the test coverage, but on the right tools, keep animation at 60 fps, avoid tech debt(make everything consistent in every browser)
+  //how would you fix a slow browser?--use the browser profiler to investigate, reduce the number of http call,use vanilla javascript(ship less code and improve the load time,reduce asset weight)
+
+
+  //Js samples
+
+  (function () {
+    var a = b = 3;
+  })();
+
+console.log("a defined? " + (typeof a !== 'undefined'));
+console.log("b defined? " + (typeof b !== 'undefined'));
+//a defined? false
+//b defined ? true
