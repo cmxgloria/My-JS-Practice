@@ -196,4 +196,3 @@ function foo2() {
 //foo2 returns:
 //undefined 
 
-m
