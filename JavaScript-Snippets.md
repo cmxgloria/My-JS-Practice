@@ -1,11 +1,26 @@
 107. similarity
 This snippet can be used to return an array of elements that appear in two arrays.
+```
+const similarity = (arr, values) => arr.filter(v => values.includes(v));
+
+similarity([1, 2, 3], [1, 2, 4]); // [1, 2]
+```
 
 108. sleep
 This snippet can be used to delay the execution of an asynchronous function by putting it into sleep.
+```
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+async function sleepyWork() {
+  console.log("I'm going to sleep for 1 second.");
+  await sleep(1000);
+  console.log('I woke up after 1 second.');
+}
+```
 
 109. smoothScroll
 This snippet can be used to smoothly scroll the element on which it is called into the visible area of the browser window.
+
 
 110. sortCharactersInString
 This snippet can be used to alphabetically sort the characters in a string.
