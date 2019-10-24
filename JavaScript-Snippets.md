@@ -1,3 +1,6 @@
+https://medium.com/better-programming/127-helpful-javascript-snippets-you-can-learn-in-30-seconds-or-less-part-6-of-6-862a6403d334
+
+
 107. similarity
 This snippet can be used to return an array of elements that appear in two arrays.
 ```
@@ -33,12 +36,29 @@ smoothScroll('.fooBar'); // scrolls smoothly to the first element with a class o
 
 110. sortCharactersInString
 This snippet can be used to alphabetically sort the characters in a string.
+```
+const sortCharactersInString = str => [...str].sort((a, b) => a.localeCompare(b)).join('');
+
+sortCharactersInString('cabbage'); // 'aabbceg'
+```
 
 111. splitLines
 This snippet can be used to split a multi-line string into an array of lines.
+```
+const splitLines = str => str.split(/\r?\n/);
+
+splitLines('This\nis a\nmultiline\nstring.\n'); // ['This', 'is a', 'multiline', 'string.' , '']
+
+```
+
 
 112. stripHTMLTags
 This snippet can be used to remove HTML/XML tags from a string.
+```
+const stripHTMLTags = str => str.replace(/<[^>]*>/g, '');
+
+stripHTMLTags('<p><em>lorem</em> <strong>ipsum</strong></p>'); // 'lorem ipsum'
+```
 
 113. sum
 This snippet can be used to find the sum of two or more numbers or arrays.
