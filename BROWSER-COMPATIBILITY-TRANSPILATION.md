@@ -10,3 +10,22 @@ Readability and economy of code — The new syntax is often easier to understand
 Addresses sources of ES5 bugs — Some ES5 syntax led to common bugs. With ES6, Ecma introduced syntax that mitigates some of the most common pitfalls.
 A similarity to other programming languages — JavaScript ES6 is syntactically more similar to other object-oriented programming languages. This leads to less friction when experienced, non-JavaScript developers want to learn JavaScript.
 
+Before we can add Babel to our project directory, we need to run npm init. The npm init command creates a package.json file in the root directory.
+
+A package.json file contains information about the current JavaScript project. Some of this information includes:
+
+Metadata — This includes a project title, description, authors, and more.
+A list of node packages required for the project — If another developer wants to run your project, npm looks inside package.json and downloads the packages in this list.
+Key-value pairs for command line scripts — You can use npm to run these shorthand scripts to perform some process. In a later exercise, we will add a script that runs Babel and transpiles ES6 to ES5.
+If you have Node installed on your computer, you can create a package.json file by typing npm init into the terminal.
+
+The terminal prompts you to fill in fields for the project’s metadata (name, description, etc.)
+
+You are not required to answer the prompts, though we recommend at minimum, you add your own title and description. If you don’t want to fill in a field, you can press enter. npm will leave fill these fields with default values or leave them empty when it creates the package.json file.
+
+After you run npm init your directory structure will contain the following files and folders:
+
+project
+|_ src
+|___ main.js
+|_ package.json
