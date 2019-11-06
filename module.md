@@ -171,3 +171,58 @@ function displaySpeedRangeStatus() {
 displaySpeedRangeStatus();
 
 ```
+
+Export as
+Named exports also conveniently offer a way to change the name of variables when we export or import them. We can do this with the as keyword.
+
+Let’s see how this works. In our menu.js example
+
+let specialty = '';
+let isVegetarian = function() {
+}; 
+let isLowSodium = function() {
+}; 
+
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+In the above example, take a look at the export statement at the bottom of the of the file.
+
+```
+export let availableAirplanes = [
+{name: 'AeroJet',
+ fuelCapacity: 800,
+ availableStaff: ['pilots', 'flightAttendants', 'engineers', 'medicalAssistance', 'sensorOperators'],
+ maxSpeed: 1200,
+ minSpeed: 300
+}, 
+{name: 'SkyJet',
+ fuelCapacity: 500,
+ availableStaff: ['pilots', 'flightAttendants'],
+ maxSpeed: 800,
+ minSpeed: 200
+}
+];
+
+export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length >= requiredStaff) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRange) {
+  let range = maxSpeed - minSpeed;
+  if (range > requiredSpeedRange) {
+    return true;
+    } else {
+    return false;
+  }
+};
+
+export default meetsSpeedRangeRequirements;
+```
