@@ -290,13 +290,11 @@ To import named export aliases with the as keyword, we add the aliased variable 
 import { chefsSpecial, isVeg } from './menu';
 
 ```
-import { availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
-
-import meetsSpeedRangeRequirements from './airplane';
+import {availableAirplanes, flightRequirements, meetsStaffRequirements, meetsSpeedRangeRequirements} from './airplane';
 
 function displayFuelCapacity() {
-  availableAirplaanes.forEach(function(element) {
-    console.log('Fuel Capacity of ' + element.name + ': ' + element['fuelCapacity']);
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element['name'] + ': ' + element['fuelCapacity']);
   });
 }
 
@@ -304,7 +302,7 @@ displayFuelCapacity();
 
 function displayStaffStatus() {
   availableAirplanes.forEach(function(element) {
-   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+   console.log(element['name'] + ' meets staff requirements: ' + meetsStaffRequirements(element['availableStaff'], flightRequirements['requiredStaff']) );
   });
 }
 
@@ -312,10 +310,9 @@ displayStaffStatus();
 
 function displaySpeedRangeStatus() {
   availableAirplanes.forEach(function(element) {
-   console.log(element.name + ' meets speed range requirements:' + meetsSpeedRangeRequirements(element.maxSpeed, element.minSpeed, flightRequirements.requiredSpeedRange));
+   console.log(element['name'] + ' meets speed range requirements:' + meetsSpeedRangeRequirements(element['maxSpeed'], element['minSpeed'], flightRequirements['requiredSpeedRange']));
   });
 }
 
 displaySpeedRangeStatus();
-
 ```
