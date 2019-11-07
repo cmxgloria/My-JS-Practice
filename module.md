@@ -107,6 +107,33 @@ specialty is a string object, while isVegetarian and isLowSodium are objects in 
 export { specialty, isVegetarian }; exports objects by their variable names. Notice the keyword export is the prefix.
 specialty and isVegetarian are exported, while isLowSodium is not exported, since it is not specified in the export syntax.
 
+
+#Named import
+
+```
+import {availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element.fuelCapacity);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+
+displayStaffStatus();
+```
+//Fuel Capacity of AeroJet: 800
+Fuel Capacity of SkyJet: 500
+AeroJet meets staff requirements: true
+SkyJet meets staff requirements: false
+
 Export Named Exports
 Named exports are also distinct in that they can be exported as soon as they are declared, by placing the keyword export in front of variable declarations.
 
