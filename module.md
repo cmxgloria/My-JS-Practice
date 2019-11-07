@@ -358,3 +358,58 @@ export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRan
 
 export default meetsSpeedRangeRequirements;
 ```
+
+
+Combining Import Statements
+```
+import { availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
+
+import meetsSpeedRangeRequirements from './airplane';
+
+function displayFuelCapacity() {
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element['fuelCapacity']);
+  });
+}
+
+displayFuelCapacity();
+
+function displayStaffStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets staff requirements: ' + meetsStaffRequirements(element.availableStaff, flightRequirements.requiredStaff) );
+  });
+}
+
+displayStaffStatus();
+
+function displaySpeedRangeStatus() {
+  availableAirplanes.forEach(function(element) {
+   console.log(element.name + ' meets speed range requirements:' + meetsSpeedRangeRequirements(element.maxSpeed, element.minSpeed, flightRequirements.requiredSpeedRange));
+  });
+}
+
+displaySpeedRangeStatus();
+```
+//Fuel Capacity of AeroJet: 800
+Fuel Capacity of SkyJet: 500
+AeroJet meets staff requirements: true
+SkyJet meets staff requirements: false
+AeroJet meets speed range requirements:true
+SkyJet meets speed range requirements:false
+
+
+##Review
+We just learned how to use JavaScript modules. Let’s review what we learned:
+
+Modules in Node.js are reusable pieces of code that can be exported from one program and imported for use in another program.
+
+module.exports exports the module for use in another program.
+require() imports the module for use in the current program.
+ES6 introduced a more flexible, easier syntax to export modules:
+
+default exports use export default to export JavaScript objects, functions, and primitive data types.
+named exports use the export keyword to export data in variables.
+named exports can be aliased with the as keyword.
+import is a keyword that imports any object, function, or data type.
+
+
