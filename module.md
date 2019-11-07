@@ -186,7 +186,6 @@ export function meetsSpeedRangeRequirements(maxSpeed, minSpeed, requiredSpeedRan
   }
 };
 
-export default meetsSpeedRangeRequirements;
 
 ```
 
@@ -196,13 +195,11 @@ To import variables that are declared, we simply use the original syntax that de
 import { specialty, isVegetarian } from 'menu';
 
 ```
-import { availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';
-
-import meetsSpeedRangeRequirements from './airplane';
+import {availableAirplanes, flightRequirements, meetsStaffRequirements, meetsSpeedRangeRequirements} from './airplane';
 
 function displayFuelCapacity() {
-  availableAirplaanes.forEach(function(element) {
-    console.log('Fuel Capacity of ' + element.name + ': ' + element['fuelCapacity']);
+  availableAirplanes.forEach(function(element) {
+    console.log('Fuel Capacity of ' + element.name + ': ' + element.fuelCapacity);
   });
 }
 
@@ -223,6 +220,12 @@ function displaySpeedRangeStatus() {
 }
 
 displaySpeedRangeStatus();
+//Fuel Capacity of AeroJet: 800
+Fuel Capacity of SkyJet: 500
+AeroJet meets staff requirements: true
+SkyJet meets staff requirements: false
+AeroJet meets speed range requirements:true
+SkyJet meets speed range requirements:false
 
 ```
 
