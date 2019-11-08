@@ -48,13 +48,16 @@ console.log(orderPromise);
 
 -The Node setTimeout() Function
 
-`setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay. setTimeout() has two parameters: a callback function and a delay in milliseconds.`
+setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay. setTimeout() has two parameters: a callback function and a delay in milliseconds.`
 ```
 const delayedHello=()=>{
   console.log('Hi!This is an asynchronous greeting!');
 };
 setTimeOut(delayedHello, 2000);
 ```
+we invoke setTimeout() with the callback function delayedHello() and 2000. In at least two seconds delayedHello() will be invoked. 
+
+
 Before it can run, any synchronous code from the program will run. Next, any code in front of it in the line will run. This means it might be more than two seconds before delayedHello() is actually executed.        
 Let’s look at how we’ll be using setTimeout() to construct asynchronous promises:
 ```
