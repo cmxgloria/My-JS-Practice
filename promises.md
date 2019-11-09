@@ -166,6 +166,7 @@ const checkInventory = (order) => {
 
 module.exports = { checkInventory };
  ```
+ 
 ##Using catch() with Promises
 
 .then() will return a promise with the same settled value as the promise it was called on if no appropriate handler was provided. This implementation allows us to separate our resolved logic from our rejected logic. Instead of passing both handlers into one .then(), we can chain a second .then() with a failure handler to a first .then() with a success handler and both cases will be handled.
