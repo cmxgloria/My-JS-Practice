@@ -92,6 +92,17 @@ We define a function, handleSuccess(), which prints the argument passed to it.
 We invoke prom‘s .then() function passing in our handleSuccess() function.
 Since prom resolves, handleSuccess() is invoked with prom‘s resolved value, 'Yay', so 'Yay' is logged to the console.
 With typical promise consumption, we won’t know whether a promise will resolve or reject, so we’ll need to provide the logic for either case. We can pass both an onFulfilled and onRejected callback to .then().
+
+```
+const prom = new Promise ((resolve,reject) => {
+  resolve ('yap');
+});
+const handlerSuccess = (resolve) => {
+  console.log('handle susscess.');
+}
+prom.then(handlerSuccess);
+```
+//handle susscess.
 ```
 let prom = new Promise((resolve, reject) => {
   let num = Math.random();
