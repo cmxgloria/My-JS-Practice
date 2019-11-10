@@ -252,6 +252,8 @@ We invoke a second .then() to handle the logic for the second promise settling.
 Inside that .then(), we have a success handler which will log the second promise’s resolved value to the console.
 In order for our chain to work properly, we had to return the promise secondPromiseFunction(firstResolveVal). This ensured that the return value of the first .then() was our second promise rather than the default return of a new promise with the same settled value as the initial.
 
+
+
 library.js
 ```
 const store = {
