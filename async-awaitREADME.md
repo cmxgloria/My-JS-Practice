@@ -114,6 +114,11 @@ async function asyncFuncExample(){
 asyncFuncExample(); // Prints: I am resolved now!
 ```
 Within our async function, asyncFuncExample(), we use await to halt our execution until myPromise() is resolved and assign its resolved value to the variable resolvedValue. Then we log resolvedValue to the console. We’re able to handle the logic for a promise in a way that reads like synchronous code.
+
+//f there’s nothing returned from the function, it will return a promise with a resolved value of undefined.
+If there’s a non-promise value returned from the function, it will return a promise resolved to that value.
+If a promise is returned from the function, it will simply return that promise
+
 ```const brainstormDinner = require('./library.js')
  
  
