@@ -338,7 +338,7 @@ rejectedPromise.catch((rejectValue) => {
 console.log(rejectValue);
 })
 ```
-library.js  as below
+//library.js  as below
 
 ```
 //This function returns true 50% of the time.
@@ -387,7 +387,29 @@ async function hostDinnerParty() {
  
 hostDinnerParty();
 ```
+```
+app.js
+const cookBeanSouffle = require('./library.js');
 
+// Write your code below:
+
+
+async function hostDinnerParty() {
+ try {
+   let dinner = await cookBeanSouffle();
+   console.log(`${dinner} is served!`);
+ }
+ catch(error){
+   console.log(error);
+   console.log('Ordering a pizza!');
+ }
+}
+
+hostDinnerParty();
+
+
+
+```
 ##Handling Independent Promises
 Remember that await halts the execution of our async function. This allows us to conveniently write synchronous-style code to handle dependent promises. But what if our async function contains multiple promises which are not dependent on the results of one another to execute?
 ```
