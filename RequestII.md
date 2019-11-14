@@ -64,7 +64,10 @@ const changeButton = () => {
   jsonButton.innerHTML = `${collection[newText]}!`;
 };
 
-jsonButton.addEventListener('click', generateJson);```
+jsonButton.addEventListener('click', generateJson);
+```
+
+//You’ll see JSON being displayed on the page. JSON, JavaScript Object Notation, will be the format in which our data is sent to us. That button you click produces a GET request. That’s right, you’ve just made a GET request!
 
 ##fetch() GET Requests I
 The first type of requests we’re going to tackle are GET requests using fetch()
