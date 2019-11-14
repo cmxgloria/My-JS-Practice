@@ -338,6 +338,8 @@ rejectedPromise.catch((rejectValue) => {
 console.log(rejectValue);
 })
 ```
+This is sometimes used in the global scope to catch final errors in complex code.
+
 //library.js  as below
 
 ```
