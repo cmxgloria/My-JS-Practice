@@ -427,6 +427,13 @@ async function concurrent() {
 console.log(await firstPromise, await secondPromise);
 }
 ```
+
+//In the waiting() function, we pause our function until the first promise resolves, then we construct the second promise. Once that resolves, we print both resolved values to the console.
+
+In our concurrent() function, both promises are constructed without using await. We then await each of their resolutions to print them to the console.
+
+With our concurrent() function both promises’ asynchronous operations can be run simultaneously. If possible, we want to get started on each asynchronous operation as soon as possible! Within our async functions we should still take advantage of concurrency, the ability to perform asynchronous actions at the same time.
+
 Sample
 app.js
 ```
