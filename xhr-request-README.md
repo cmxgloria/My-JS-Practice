@@ -238,6 +238,9 @@ A query string is separated from the URL using a ?character. After ?, you can th
 If you want to add an additional parameter you will have to use the & character to separate your parameters. Like so:
 
 <'https://api.datamuse.com/words?key=value&anotherKey=anotherValue'
+
+//main.js
+
 ```
 // Information to reach API
 const url = 'https://api.datamuse.com/words?';
@@ -334,6 +337,8 @@ const renderJsonResponse = (res) => {
 ```
 
 ##XHR POST Requests I
+The major difference between a GET request and POST request is that a POST request requires additional information to be sent through the request. This additional information is sent in the body of the post request.
+ 
 [Codecademy Articles: Rebrandly URL Shortener API ]
 ```
 const xhr = new XMLHttpRequest();//creat a new object
