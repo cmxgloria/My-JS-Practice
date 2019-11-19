@@ -228,7 +228,7 @@ In this exercise, the first parameter of our query string is rel_rhy, and the va
 
 
 ##XHR GET Requests IV
-In the previous exercise, you made a GET request to the Datamuse API to find words that rhyme. In this exercise, we will create a request to set a topic and find adjectives that describe the input word using query strings.
+we will create a request to set a topic and find adjectives that describe the input word using query strings.
 A query string contains additional information to be sent with a request. The Datamuse API allows us to retrieve more specific data with query strings attached to the request URL.
 
 Wiki: query string
